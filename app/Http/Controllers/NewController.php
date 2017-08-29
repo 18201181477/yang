@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 class NewController extends Controller
 {
-    public function new()
+    public function news()
     {
     	return view('new.index');
     }

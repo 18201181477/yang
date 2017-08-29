@@ -75,9 +75,26 @@
 					<button type="submit" class="btn btn-default"></button>
 
 				</div>	
-				<a href="{{url('index/login')}}" class="btn btn-success">登录</a>	
-				<a href="{{url('index/register')}}" class="btn btn-info">注册</a>
+
+				@if (\Auth::user())
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{\Auth::user()->name}} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                        	<li><a href="http://localhost/laravel/public/logout">我的消息</a></li>
+                            <li><a href="{{url('index/logout')}}">退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+				@else
+				    <a href="{{url('index/login')}}" class="btn btn-success">登录</a>	
+					<a href="{{url('index/register')}}" class="btn btn-info">注册</a>
+				@endif
 			</form>	
+				
 			
 			<div class="clearfix"> </div>
 				

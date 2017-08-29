@@ -1,6 +1,7 @@
 <?php
 use Gregwar\Captcha\CaptchaBuilder;
 // use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -33,22 +34,26 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
+    Route::get('home','IndexController@index');
    	Route::get('member/info',['uses'=>'MemberController@info']);
 	Route::get('/index',['as'=>'index/index','uses'=>'IndexController@index']);
 	Route::get('/about',['as'=>'index/about','uses'=>'AboutController@about']);
 	Route::get('/service',['as'=>'index/services','uses'=>'ServiceController@service']);
-	Route::get('/new',['as'=>'index/news','uses'=>'NewController@new']);
+	Route::get('/news',['as'=>'index/news','uses'=>'NewController@news']);
 	Route::get('/contact',['as'=>'index/contact','uses'=>'ContactController@contact']);
-	Route::get('/index/login',function(){
-		return view('login.login');
-	});
+	Route::get('/index/login','Auth\AuthController@getLogin');
+    Route::post('/index/login','Auth\AuthController@postLogin');
 	Route::get('index/register','Auth\AuthController@getRegister');
-	Route::post('auth/register','Auth\AuthController@postRegister');
-
+	Route::post('index/register','Auth\AuthController@postRegister');
+    // Route::get('index/logout','Auth\AuthController@getLogout');
+    Route::get('index/logout',function(){
+        \Auth::logout();
+        return view('index.index');
+    });
 	Route::get('captcha', function(){
 		$builder = new CaptchaBuilder;
 		$builder->build();
-		\Session::set('captcha',$builder->getPhrase()); //存储验证码
+		Session::set('captcha',$builder->getPhrase()); //存储验证码
 		return response($builder->output())->header('Content-type','image/jpeg');
 	});
 
@@ -59,7 +64,6 @@ Route::group(['middleware' => ['web']], function () {
 
 //     Route::get('/home', 'HomeController@index');
 // });
-
 
 
 Route::group(['middleware'=>'web','namespace' => 'Admin'], function(){
