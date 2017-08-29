@@ -76,7 +76,7 @@
 
 				</div>	
 				<a href="{{url('index/login')}}" class="btn btn-success">登录</a>	
-				<a href="{{url('index/register')}}" class="btn btn-info">注册</a>
+				<a href="{{url('auth/register')}}" class="btn btn-info">注册</a>
 			</form>	
 			
 			<div class="clearfix"> </div>

@@ -1,66 +1,79 @@
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {!! csrf_field() !!}
+<!DOCTYPE html>
+<html>
+<base href="/frontend/">
+<!-- Head -->
+<head>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
+    <title>登录表单</title>
 
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+    <!-- Meta-Tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //Meta-Tags -->
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
+    <!-- Style --> <link rel="stylesheet" href="css/style2.css" type="text/css" media="all">
 
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+</head>
+<!-- //Head -->
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i>Login
-                                </button>
+<!-- Body -->
+<body>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+    <h1>登录表单</h1>
+
+    <div class="container w3layouts agileits">
+
+        <div class="login w3layouts agileits">
+            <h2><a href="">登 录</a></h2>
+            <form action="#" method="post">
+                <input type="text" Name="Userame" placeholder="用户名" required="">
+                <input type="password" Name="Password" placeholder="密码" required="">
+            </form>
+            <ul class="tick w3layouts agileits">
+                <li>
+                    <input type="checkbox" id="brand1" value="">
+                    <label for="brand1"><span></span>记住我</label>
+                </li>
+            </ul>
+            <div class="send-button w3layouts agileits">
+                <form>
+                    <input type="submit" value="登 录">
+                </form>
             </div>
-        </div>
+            <a href="">忘记密码?</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="register.html">申请账号</a>
+            <div class="social-icons w3layouts agileits">
+                <p>- 其他方式登录 -</p>
+                <ul>
+                    <li class="qq"><a href="#">
+                    <span class="icons w3layouts agileits"></span>
+                    <span class="text w3layouts agileits">QQ</span></a></li>
+                    <li class="weixin w3ls"><a href="#">
+                    <span class="icons w3layouts"></span>
+                    <span class="text w3layouts agileits">微信</span></a></li>
+                    <li class="weibo aits"><a href="#">
+                    <span class="icons agileits"></span>
+                    <span class="text w3layouts agileits">微博</span></a></li>
+                    <div class="clear"> </div>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div><div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+        
+
+        <div class="clear"></div>
+
     </div>
-</div>
-@endsection
+
+    <div class="footer w3layouts agileits">
+        <p>Copyright &copy; More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+    </div>
+
+</body>
+<!-- //Body -->
+
+</html>
