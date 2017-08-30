@@ -80,6 +80,7 @@ Route::group(['middleware'=>'web','namespace' => 'Admin'], function(){
         Route::get('banner',['uses'=>'BannerController@index']);
         Route::get('bannerindex',['uses'=>'BannerController@banner']);
         Route::get('banneradd',['uses'=>'BannerController@banneradd']);
+        Route::post('add',['uses'=>'BannerController@add']);
 
 
         Route::get('vip',['uses'=>'VipController@index']);

@@ -21,7 +21,7 @@
 			<!-- banner页面样式 -->
 			<div class="banner">
 				<div class="add">
-					<a class="addA" href="/admin/banneradd">上传广告&nbsp;&nbsp;+</a>
+					<a class="addA" href="/admin/banneradd">新增医院&nbsp;&nbsp;+</a>
 				</div>
 				<!-- banner 表格 显示 -->
 				<div class="banShow">
