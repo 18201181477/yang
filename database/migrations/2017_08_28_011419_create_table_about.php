@@ -15,12 +15,12 @@ class CreateTableAbout extends Migration
         Schema::create('about', function (Blueprint $table) {
             $table->increments('aid');
             $table->string('function', 30);
-            $table->text('title');
+            $table->string('title', 50);
             $table->text('content');
-            $table->text('daddress');
+            $table->string('daddress', 100);
             $table->string('raddress', 40);
             $table->string('phone', 12);
-            $table->string('email', 30);
+            $table->string('email', 40);
         });
     }
 

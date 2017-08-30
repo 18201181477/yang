@@ -1,82 +1,82 @@
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
-                        {!! csrf_field() !!}
+<!DOCTYPE html>
+<html>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Name</label>
+<!-- Head -->
+<head>
+<base href="/frontend/">
+    <title>登录表单</title>
 
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+    <!-- Meta-Tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <!-- //Meta-Tags -->
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
+    <!-- Style --> <link rel="stylesheet" href="css/style2.css" type="text/css" media="all">
 
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
+</head>
+<!-- //Head -->
 
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
+<!-- Body -->
+<body>
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+    <h1>注册表单</h1>
 
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Confirm Password</label>
+    <div class="container w3layouts agileits">
 
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password_confirmation">
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i>Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+        <div class="register w3layouts agileits">
+            <h2>注 册</h2>
+            <form action="{{url('index/register')}}" method="post">
+            {{csrf_field()}}
+            <div class="a">
+                <input class="a1" style="border:0px solid white;width:100px;height:30px;" type="button" value="个人"><input class="a2" style="border:0px solid white;height:30px;width:100px;" type="button" value="医院">
             </div>
+                <input class="hidden" type="hidden" name="status" value="0">
+                <input type="text" name="name" placeholder="用户名" required="">
+                <input type="text" name="email" placeholder="邮箱" required="">
+                <input type="text" style="width:50%" placeholder="输入验证码"><img class="img"  src="{{url('/captcha')}}">
+                <input type="password" name="password" placeholder="密码" required="">
+                <input type="password" name="password_confirmation" placeholder='确认密码' required="">
+                <input type="text" name="phone" placeholder="手机号码" required="">
+            <div class="send-button w3layouts agileits">
+                    <input type="submit" value="免费注册">
+            </div>
+            <a style="color:white" href="{{url('index/login')}}">已有账号?选择登录</a>
+            </form>
+            <div class="clear"></div>
         </div>
+            
+            <div class="clear"></div>
+        </div><div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+        
+
+        <div class="clear"></div>
+
     </div>
-</div>
-@endsection
+
+
+</body>
+<!-- //Body -->
+
+</html>
+<script type="text/javascript">
+    $(".a1").css('background','red');
+    $(".img").click(function(){
+        this.src="{{url('captcha')}}"+'?r='+Math.random();
+    })
+    $(".a1").click(function(){
+        $(this).css('background','red');
+        $('.a2').css('background','');
+        $(".hidden").val('0');
+    })
+    $(".a2").click(function(){
+        $(this).css('background','red');
+        $(".a1").css('background','');
+        $(".hidden").val('1');
+    })
+</script>

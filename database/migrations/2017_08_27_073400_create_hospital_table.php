@@ -7,7 +7,6 @@ class CreateHospitalTable extends Migration
 {
     /**
      * Run the migrations.
-     *
      * @return void
      */
     public function up()
@@ -28,7 +27,8 @@ class CreateHospitalTable extends Migration
             $table->integer('grade')->comment('等级');//等级
             $table->string('area',50)->comment('区域');//区域
             $table->tinyInteger('type')->comment('分类');//分类
-            $table->text('rule')->comment('额外规则');//额外规则 
+            $table->text('rule')->comment('额外规则');//额外规则
+            $table->tinyInteger('sort')->comment('排序');//排序
             $table->integer('user_id');//
             $table->timestamps();
         });
