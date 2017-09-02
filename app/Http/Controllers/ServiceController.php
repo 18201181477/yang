@@ -13,7 +13,10 @@ class ServiceController extends Controller
 {
     public function service()
     {
-        $arr = Hospital::get()->toArray();
+        $name = isset($_GET['search'])?$_GET['search']:'';
+
+
+        $arr = Hospital::where('name','like','%'.$name.'%')->get()->toArray();
         
     	return view('service.index',['arr'=>$arr]);
     }

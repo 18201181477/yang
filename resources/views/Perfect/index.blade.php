@@ -20,6 +20,7 @@
   <style type="text/css">
 	#normal_map {height:200px;overflow: hidden;width: 300px}
 	#map {width: 500px;height: 300px;overflow: hidden;margin:0;}
+    #img{width: 80px;height: 50px;}
 </style>
 
 
@@ -41,12 +42,13 @@
                 <input type="text" name="name" placeholder="医院名称" value="<?php echo  isset($res['name'])?$res['name']:null;?>" >
                 <div class="bbD">
                 <input type="text"  placeholder="医院图片上传" disabled>
-			
 						<input type="file" class="file" name="image" /> 
+                        <?php if($res['image']){?> 
+                        <img src="/img/<?=$res['image']?>" id="img">  
+                        <input type="hidden" value="<?=$res['image']?>" name="img">
+                        <?php } ?>
 				</div>
                 <input type="text" name="url"  placeholder="医院官网" value="<?php echo  isset($res['name'])?$res['name']:null;;?>">
-                <!-- <input type="text" name="type"  placeholder="医院类型" /> -->
-                <!-- <input type="text" name="grade" placeholder="医院等级" /> -->
                 <input type="text" name="documents" placeholder="营业执照" value="<?php echo  isset($res['documents'])?$res['documents']:null;;?>">
                 <input type="text" name="phone" placeholder="联系电话" value="<?php echo  isset($res['phone'])?$res['phone']:null;;?>">
                 <input type="text" name="address" placeholder="详细地址" value="<?php echo  isset($res['address'])?$res['address']:null;;?>">

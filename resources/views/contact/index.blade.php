@@ -1,25 +1,32 @@
 @extends('layouts.frontend_layouts')
-<?php
-date_default_timezone_set("Asia/Shanghai");
-?>
 
-
-
-<style>
-.footer{
-display: none;
-}
-
-
-.pagination li{list-style:none;float:left;}
-
-
-</style>
 @section('content')
+
 	<!--contact-->
 	<div class="contact">
 		<div class="container">
-			<h3>Contact us</h3>
+			<h3>留言板</h3>
+			<div class="panel panel-default">
+				@foreach($arr as $k=>$v)
+					<div class="panel panel-default">
+						<table class="table">
+							<tr>
+								<td width="15%"></span><span class="badge badge-primary">{{$k+1}} . floor</span></td>
+								<td width="30%"><a href="javascript:;" title="{{$v->email}}">{{$v->name}}</a></td>
+								<td width="15%">{{$v->email}}</td>
+								<td width="15%">{{date('Y-m-d H:i:s',$v->addtime)}}</td>
+								<td><a href="javascript:;">回复</a></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td colspan="4">
+									{{$v->message}}
+								</td>
+							</tr>
+						</table>
+					</div>
+				@endforeach
+			</div>
 			<div class="contact-form">
 				<form action="{{url('contact')}}" method="post">
                     <?php echo csrf_field(); ?>
@@ -37,19 +44,5 @@ display: none;
 			</div>
 		</div>
 	</div>
-    <div style="margin-left: 240px;">
-        <h1 style="color:green">最近的帖子</h1>
-        
-        <?php  foreach($arr as $k=>$v){?>
-        <p style="color: #0086b3"><?php echo  $v->name; ?>&nbsp;<?php echo date('Y-m-d H:i:s',$v->addtime);?>:</p>
-        <p><?php echo $v->message ?></p>
-        <?php } ?>
-    </div>
-    <style>
-        .pagination{
-            margin-left: 600px;
-        }
-    </style>
-    {!! $arr->links()  !!}
-	<!--//contact-->
+    <!--//contact-->
 @stop

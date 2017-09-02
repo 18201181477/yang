@@ -27,7 +27,7 @@
 					<form>
 						<div class="cfD">
 							
-							<button class="userbtn">添加</button>
+							<a href="{{url('admin/member')}}" style="text-align:center;display:block;width:100px;" class="userbtn">添加</a>
 
 						</div>
 					</form>
@@ -49,7 +49,7 @@
 							<tr height="40px">
 								<td><?php echo $val['id']?></td>
 								<td><?php echo $val['name']?></td>
-								<td><img src="{{url($val['img'])}}" style="height: 100px;width: 200px;" /></td>
+								<td><img src="/img/{{$val['img']}}" style="height: 100px;width: 200px;" /></td>
 								<td><?php echo $val['per_url']?></td>
 								<td><?php echo $val['per_info']?></td>
 								<td><?php echo date('Y-m-d H:i:s',$val['add_time'])?></td>

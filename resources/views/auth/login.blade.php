@@ -31,8 +31,8 @@
             <h2><a href="">登 录</a></h2>
             <form action="{{url('index/login')}}" method="post">
             {{csrf_field()}}
-                <input type="text" name="name" placeholder="用户名" required="">
-                <input type="password" name="password" placeholder="密码" required="">
+                <input value="{{ old('name')}}" type="text" name="name" placeholder="用户名" required="">
+                <input value="{{ old('password') }}" type="password" name="password" placeholder="密码" required="">
             
             <ul class="tick w3layouts agileits">
                 <li>
@@ -40,6 +40,7 @@
                     <label for="brand1"><span></span>记住我</label>
                 </li>
             </ul>
+            <div style="color:red">@if(\Session::has('message')){{\Session::get('message')}}@endif</div>
             <div class="send-button w3layouts agileits">
                 <input type="submit" value="登 录">
             </div>

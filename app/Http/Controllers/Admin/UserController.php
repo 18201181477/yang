@@ -12,10 +12,5 @@ class UserController extends Controller
     {
     	return view('admin.user.index');
     }
-
-    public function user()
-    {
-    	return view('admin.user.user');
-    }
     
 }

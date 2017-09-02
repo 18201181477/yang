@@ -7,7 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
+use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     public $username = 'name';
@@ -73,5 +73,59 @@ class AuthController extends Controller
             'status' => $data['status'],
             'phone' => $data['phone'],
         ]);
+    }
+
+    public function postRegister(Request $res)
+    {
+        $validator = \Validator::make($res->input(),[
+                'User.name' => 'required|min:2|max:20',
+                'User.password' => 'required|min:6|max:20',
+                'User.status' => 'required|integer',
+                'User.email' => 'required',
+                'User.email' => ['regex:/^\w{2,16}@(qq|net|163)\.com$/i'],
+                'User.password_confirmation' => 'required|min:6|max:20',
+                'User.phone' => 'required',
+                'User.phone' => ['regex:/^\d{11}$/'],
+            ],[
+                'required' => ':attribute为必填项',
+                'min' => ':attribute长度不符合要求',
+                'max' => ':attribute长度不符合要求',
+                'regex' => ':attribute格式不正确',
+                'integer' => ':attribute必须为数字',
+            ],[
+                'User.name' => '*用户名',
+                'User.password' => '*密码',
+                'User.status' => '*注册类型',
+                'User.email' => '*邮箱',
+                'User.password_confirmation' => '*确认密码',
+                'User.phone' => '*手机号码',
+            ]);
+            if (\Session::get('captcha') != $res->input('captcha')) {
+                return redirect()->back()->with('message','验证码错误')->withInput();
+            }
+            if ($res->input('User.password') != $res->input('User.password_confirmation')) {
+                return redirect()->back()->with('sure','2次密码不一致');
+            }
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+            $model = new User();
+            if ($data=$model->register($res->input('User'))) {
+                \Session::put('user',$data);
+                return redirect('index');
+            } else {
+                return redirect()->back()->with('error','用户名已经存在')->withInput();
+            }
+    }
+
+    public function postLogin(Request $res)
+    {
+        $model = new User;
+        if ($data = $model->login($res->input())) {
+            \Session::put('user',$data);
+            return redirect('index');
+        } else {
+            return redirect()->back()->with('message','用户名或密码错误')->withInput();
+        }
     }
 }

@@ -7,18 +7,14 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Models\Title;
 class AboutController extends Controller
 {
     public function about()
     {
-    	$about = DB::table('about')->first();
-    	$team = DB::table('ourteam')->take(4)->get();
-    	// print_r($team);die;
-    	// $about = DB::select('select * from about where aid = 1');
-    	// print_r($about);die;
-        // return view('about.index', [$about=>'about']);
-        // return view('about.index', $about );
-        return view('about.index')->with('about', $about)->with('team', $team);
+    	$model = new Title;
+        $data = $model->page(2);
+        // dd($data);
+        return view('about.index',['data'=>$data]);
     }
 }

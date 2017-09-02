@@ -25,8 +25,18 @@ class MemberController extends Controller
      * [info description] 添加成员信息
      * @return [type] [description]
      */
-    public function info()
+    public function info(Request $res)
     {
+        //上传图片
+        $file = $res->file('img');
+        if ($file->isValid()) {
+            // 上传目录。 public目录下 uploads/thumb 文件夹
+            $dir = 'img/';  
+            // 文件名。格式：时间戳 + 6位随机数 + 后缀名
+            $filename = time() . mt_rand(100000, 999999) . '.' . $file ->getClientOriginalExtension();          
+            $file->move($dir, $filename);
+            $path = $filename;//图片路径
+        } 
     	// 接收图片信息
     	$file = Input::file('img');
     	// 接收名称
@@ -38,20 +48,14 @@ class MemberController extends Controller
         // 添加时间
         $add_time = time();
         // 允许类型
-        $allowed_extensions = ["png", "jpg", "gif"];
-        // 判断是否允许
-        if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowed_extensions)) {
-            return ['error' => 'You may only upload png, jpg or gif.'];
-        }
-        // 保存路劲
-        $destinationPath = 'storage/uploads/'; //public 文件夹下面建 storage/uploads 文件夹
-        $extension = $file->getClientOriginalExtension();
-        $fileName = str_random(10).'.'.$extension;
-        // 保存图片
-        $file->move($destinationPath, $fileName);
-        $filePath = asset($destinationPath.$fileName);
+        // $allowed_extensions = ["png", "jpg", "gif"];
+        // // 判断是否允许
+        // if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowed_extensions)) {
+        //     return ['error' => 'You may only upload png, jpg or gif.'];
+        // }
+
         // 添加
-        $info = DB::insert("insert into ourteam(name,img,per_url,per_info,add_time) VALUES ('$name','$filePath','$pre_url','$desc','$add_time')");
+        $info = DB::insert("insert into ourteam(name,img,per_url,per_info,add_time) VALUES ('$name','$path','$pre_url','$desc','$add_time')");
 		if($info) {
 			return redirect('/admin/memberShow');
 		} else {
@@ -87,7 +91,7 @@ class MemberController extends Controller
      * [memberSave description] 成员信息修改
      * @return [type] [description]
      */
-    public function memberSave() {
+    public function memberSave(Request $res) {
     	if($_POST) {
     		$id = Input::get('id');
     		// 接收图片信息
@@ -100,22 +104,19 @@ class MemberController extends Controller
 	        $pre_url = Input::get('pre_url');
 	        // 添加时间
 	        $add_time = time();
-	        // 允许类型
-	        $allowed_extensions = ["png", "jpg", "gif"];
-	        // 判断是否允许
-	        if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowed_extensions)) {
-	            return ['error' => 'You may only upload png, jpg or gif.'];
-	        }
-	        // 保存路劲
-	        $destinationPath = 'storage/uploads/'; //public 文件夹下面建 storage/uploads 文件夹
-	        $extension = $file->getClientOriginalExtension();
-	        $fileName = str_random(10).'.'.$extension;
-	        // 保存图片
-	        $file->move($destinationPath, $fileName);
-	        $filePath = asset($destinationPath.$fileName);
+	       //上传图片
+            $file = $res->file('img');
+            if ($file->isValid()) {
+                // 上传目录。 public目录下 uploads/thumb 文件夹
+                $dir = 'img/';  
+                // 文件名。格式：时间戳 + 6位随机数 + 后缀名
+                $filename = time() . mt_rand(100000, 999999) . '.' . $file ->getClientOriginalExtension();          
+                $file->move($dir, $filename);
+                $path = $filename;//图片路径
+            } 
 	        $arr = [
 	        	'name'	=>	$name,
-	        	'img'	=>	$filePath,
+	        	'img'	=>	$path,
 	        	'per_url'	=>	$pre_url,
 	        	'per_info'	=>	$desc,
 	        	'add_time'	=>	$add_time,

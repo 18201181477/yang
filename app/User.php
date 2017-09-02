@@ -24,4 +24,29 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function register($data)
+    {
+        $res = $this::where(['name'=>$data['name'],'email'=>$data['email']])->first();
+        if ($res) {
+            return false;
+        } else {
+            unset($data['password_confirmation']);
+            $data['password'] = md5($data['password']);
+            $result = $this::create($data);
+            if ($result->save()) {
+                $data['id'] = $result->id;
+                return $data;
+            } else {
+                return false;
+            }
+        }
+    }
+
+
+    public function login($data)
+    {
+        $res = $this::where(['name'=>$data['name'],'password'=>md5($data['password'])])->first();
+        return $res?$res->toArray():false;
+    }
 }

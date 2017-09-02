@@ -48,13 +48,14 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('contact','ContactController@contactadd');
     // Route::get('index/logout','Auth\AuthController@getLogout');
     Route::get('index/logout',function(){
-        \Auth::logout();
+        // \Auth::logout();
+        \Session::forget('user');
         return view('index.index');
     });
 	Route::get('captcha', function(){
 		$builder = new CaptchaBuilder;
 		$builder->build();
-		Session::set('captcha',$builder->getPhrase()); //存储验证码
+		Session::put('captcha',$builder->getPhrase()); //存储验证码
 		return response($builder->output())->header('Content-type','image/jpeg');
 	});
 
@@ -72,6 +73,20 @@ Route::group(['middleware' => ['web']], function () {
     //医院科室
     Route::get('/department/id/{id}',['as'=>'index/department','uses'=>'ServiceController@department']);
 
+    Route::get('aa',function(){
+
+    });
+    //医院科室展示
+    Route::get('index/offices','OfficesController@show');
+    //医院科室添加页
+    Route::get('index/addpage','OfficesController@addpage');
+    //医院科室添加
+    Route::post('index/officeadd','OfficesController@officeadd');
+    //医院科室多级显示
+    Route::post('index/offspid','OfficesController@offspid');
+    //科室医生展示页
+    Route::get('index/doctor','DoctorController@showpage');
+
 });
 
 // Route::group(['middleware' => 'web'], function () {
@@ -81,10 +96,11 @@ Route::group(['middleware' => ['web']], function () {
 // });
 
 
-Route::group(['middleware'=>'web','namespace' => 'Admin'], function(){
+Route::group(['middleware'=>['web','admin'],'namespace' => 'Admin'], function(){
 	Route::group(['prefix'=>'admin'],function(){
-		Route::any('login/index',['uses'=>'LoginController@index']);
-        Route::get('index',['uses'=>'IndexController@index']);
+        Route::get('index',function(){
+            return view('admin.index.index');
+        });
         Route::get('home',['uses'=>'HomeController@home']);
 
 
@@ -138,11 +154,32 @@ Route::group(['middleware'=>'web','namespace' => 'Admin'], function(){
 
 
         //科室
-        Route::get('department',['uses'=>'DepartmentController@index']);
         Route::get('departmentindex',['uses'=>'DepartmentController@department']);
         Route::any('departmentadd',['uses'=>'DepartmentController@departmentadd']);
         Route::any('departmentdel',['uses'=>'DepartmentController@departmentdel']);
+
+        //医疗常识
+        Route::get('title','TitleController@index');
+        Route::post('title',['middleware'=>'upload:title_img','uses'=>'TitleController@index']);
+        Route::get('title/add',function(){
+            return view('admin.title.add');
+        });
+
+        //套模板
+        Route::get('left',function(){
+            return view('admin.inc.backend_left');
+        });
+        Route::get('head',function(){
+            return view('admin.inc.backend_head');
+        });
+        Route::get('main',function(){
+            return view('admin.inc.backend_main');
+        });
 	});
+});
+
+Route::group(['middleware'=>['web'],'namespace'=>'Admin'],function(){
+    Route::match(['get','post'],'admin/login','LoginController@index');
 });
 
 

@@ -5,7 +5,7 @@
 <!-- Head -->
 <head>
 <base href="/frontend/">
-    <title>登录表单</title>
+    <title>注册表单</title>
 
     <!-- Meta-Tags -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,25 +24,33 @@
 
 <!-- Body -->
 <body>
-
     <h1>注册表单</h1>
 
     <div class="container w3layouts agileits">
 
         <div class="register w3layouts agileits">
             <h2>注 册</h2>
+
             <form action="{{url('index/register')}}" method="post">
             {{csrf_field()}}
             <div class="a">
-                <input class="a1" style="border:0px solid white;width:100px;height:30px;" type="button" value="个人"><input class="a2" style="border:0px solid white;height:30px;width:100px;" type="button" value="医院">
+                <input  class="a1" style="border:0px solid white;width:100px;height:30px;" type="button" value="个人"><input class="a2" style="border:0px solid white;height:30px;width:100px;" type="button" value="医院">
             </div>
-                <input class="hidden" type="hidden" name="status" value="0">
-                <input type="text" name="name" placeholder="用户名" required="">
-                <input type="text" name="email" placeholder="邮箱" required="">
-                <input type="text" style="width:50%" placeholder="输入验证码"><img class="img"  src="{{url('/captcha')}}">
-                <input type="password" name="password" placeholder="密码" required="">
-                <input type="password" name="password_confirmation" placeholder='确认密码' required="">
-                <input type="text" name="phone" placeholder="手机号码" required="">
+                <input value="0" class="hidden" type="hidden" name="User[status]" value="0">
+                <div style="color:red">{{$errors->first('User.status')}}</div>
+                <input value="{{ old('User')['name']}}" type="text" name="User[name]" placeholder="用户名" required="">
+                <div style="color:red">{{$errors->first('User.name')}}</div>
+                <input value="{{ old('User')['email']}}" type="text" name="User[email]" placeholder="邮箱" required="">
+                <div style="color:red">{{$errors->first('User.email')}}</div>
+                <input type="text" name="captcha" style="width:50%" placeholder="输入验证码"><img class="img"  src="{{url('/captcha')}}">
+                <div style="color:red;">@if(\Session::has('message')){{\Session::get('message')}}@endif</div>
+                <input value="{{ old('User')['password']}}" type="password" name="User[password]" placeholder="密码" required="">
+                <div style="color:red">{{$errors->first('User.password')}}</div>
+                <input value="{{ old('User')['password_confirmation']}}" type="password" name="User[password_confirmation]" placeholder='确认密码' required="">
+                <div style="color:red">@if(\Session::has('sure')){{\Session::get('sure')}}@endif{{$errors->first('User.password_confirmation')}}</div>
+                <input value="{{ old('User')['phone']}}" type="text" name="User[phone]" placeholder="手机号码" required="">
+                <div style="color:red">{{$errors->first('User.phone')}}</div>
+                <div style="color:red">@if(\Session::has('error')){{\Session::get('error')}}@endif</div>
             <div class="send-button w3layouts agileits">
                     <input type="submit" value="免费注册">
             </div>

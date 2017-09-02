@@ -35,6 +35,13 @@
 	<div class="header">
 		<div class="container">
 			<div class="header-logo">
+				<a href="{{URL::route('index/index')}}"></a>		
+			</div>
+					
+			<div class="clearfix"> </div>
+		</div>	
+		<div class="container">
+			<div class="header-logo">
 				<a href="{{URL::route('index/index')}}"><img src="images/logo.png" alt="logo"/></a>		
 			</div>
 			<div class="header-info">
@@ -53,7 +60,7 @@
 				<span class="menu-icon"><img src="images/menu-icon.png" alt=""/></span>		
 				<ul class="nav1">
 					<li><a href="{{ URL::route('index/index') }}" class="{{Request::getPathInfo()=='/index' || Request::getPathInfo()=='/' ? 'active':''}}"><span data-hover="主页">主页</span></a></li>
-					<li><a href="{{ URL::route('index/about') }}" class="{{Request::getPathInfo()=='/about' ? 'active':''}}"> <span data-hover="关于我们">关于我们</span></a></li>
+					<li><a href="{{ URL::route('index/about') }}" class="{{Request::getPathInfo()=='/about' ? 'active':''}}"> <span data-hover="医疗常识">医疗常识</span></a></li>
 					@section('service')
 					<li><a href="{{ URL::route('index/services') }}" class="{{Request::getPathInfo()=='/service' ? 'active':''}}"> <span data-hover="医疗服务">医疗服务</span></a></li>
 					@show
@@ -72,18 +79,50 @@
 			</div>
 			<!--//top-nav-->
 			<form class="navbar-form navbar-right">
+				<div class="btn-group">
+				    <span  class="btn btn-default dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+				    {{Session::get('address')}} <span class="caret"></span>
+				    </span>
+				    <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				   
+						<div class="container" style="word-wrap:break-word;word-break:break-all; ">
+						<table class="table" style="word-wrap:break-word;word-break:break-all; ">
+							<tr>
+								<td><a href="javascript:;" title="123@qq.com">彭志</a></td>
+							</tr>
+							<tr>
+								<td>hahahaha</td>
+								<td>hahahaha</td>
+								
+							</tr>
+
+
+							<tr>
+								<td><a href="javascript:;" title="123@qq.com">彭志</a></td>
+							</tr>
+							<tr>
+								<td>hahahaha</td>
+								<td>hahahaha</td>
+								<td>hahahaha</td>
+								<td>hahahaha</td>
+							</tr>
+						</table>
+						</div>
+					
+				    </div>
+				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
+					<input type="text" name="search" class="form-control" placeholder="Search">
 					<button type="submit" class="btn btn-default"></button>
 
 				</div>	
 
-				@if (\Auth::user())
-					@if(\Auth::user()->status == 0)
+				@if (\Session::has('user'))
+					@if(\Session::get('user')['status'] == 0)
 					<ul class="nav navbar-nav navbar-right">
 	                    <li class="dropdown">
 	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-	                                {{\Auth::user()->name}} <span class="caret"></span>
+	                                {{\Session::get('user')['name']}} <span class="caret"></span>
 	                        </a>
 
 	                        <ul class="dropdown-menu" role="menu">
@@ -96,7 +135,7 @@
 					<ul class="nav navbar-nav navbar-right">
 	                    <li class="dropdown">
 	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-	                                {{\Auth::user()->name}} <span class="caret"></span>
+	                                {{\Session::get('user')['name']}} <span class="caret"></span>
 	                        </a>
 	                        <ul class="dropdown-menu" role="menu">
 	                        	<li><a href="javascript:;">企业账号</a></li>
