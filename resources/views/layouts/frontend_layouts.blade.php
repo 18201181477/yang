@@ -45,8 +45,7 @@
 				<a href="{{URL::route('index/index')}}"><img src="images/logo.png" alt="logo"/></a>		
 			</div>
 			<div class="header-info">
-				<p>Information Service:</p>
-				<h4>400-1234-1234</h4>
+				<h4><iframe width="360" scrolling="no" height="100" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1"></iframe></h4>	
 			</div>			
 			<div class="clearfix"> </div>
 		</div>	
@@ -78,8 +77,8 @@
 				<!-- /script-for-menu -->
 			</div>
 			<!--//top-nav-->
-			<form class="navbar-form navbar-right">
-				<div class="btn-group">
+			<form action="{{url('service')}}" class="navbar-form navbar-right">
+				<!-- <div class="btn-group">
 				    <span  class="btn btn-default dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
 				    {{Session::get('address')}} <span class="caret"></span>
 				    </span>
@@ -110,7 +109,7 @@
 						</div>
 					
 				    </div>
-				</div>
+				</div> -->
 				<div class="form-group">
 					<input type="text" name="search" class="form-control" placeholder="Search">
 					<button type="submit" class="btn btn-default"></button>
