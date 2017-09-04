@@ -1,0 +1,14 @@
+@extends('layouts.backend')
+@section('content')
+<body>
+	<div id="pageAll">
+		<div class="page">
+			<!-- main页面样式 -->
+			<div class="indexL">
+				<img class="indexBn" src="img/indexBanner.png" />
+			</div>
+			<!-- main页面样式end -->
+		</div>
+	</div>
+</body>
+@stop
