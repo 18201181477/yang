@@ -193,5 +193,22 @@ Route::group(['middleware'=>['web'],'namespace'=>'Admin'],function(){
     Route::match(['get','post'],'admin/login','LoginController@index');
 });
 
+Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
+    Route::group(['prefix'=>'hospitalback'],function(){
+
+         Route::get('index',['uses'=>'IndexController@index']);
+
+         Route::get('map',['uses'=>'MapController@map']);
+
+         Route::get('doctor',['uses'=>'DoctorController@doctor']);
+
+         Route::get('hospital',['uses'=>'HospitalController@hospital']);
+
+         Route::get('tables',['uses'=>'TablesController@tables']);
+
+    });
+});
+
+
 
 		
