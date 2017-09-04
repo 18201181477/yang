@@ -26,7 +26,7 @@
 					<?php $id=$data['id']?>
 					<a href="{{url('/info',['id',$id])}}" class="list-group-item text-center {{Request::getPathInfo()=='/info/id/'.$id ? 'active':''}}">医院信息</a>
 					<a href="{{url('/department',['id',$id])}}" class="list-group-item text-center {{Request::getPathInfo()=='/department/id/'.$id ? 'active':''}}">医院科室</a>
-					<a href="" class="list-group-item text-center ">预约挂号</a>
+					<a href="http://wpa.qq.com/msgrd?v=3&uin=1576573710&site=qq&menu=yes" class="list-group-item text-center">QQ在线咨询</a>
 				</div>
 				<div id="panorama"></div>
 				<div id="normal_map"></div>

@@ -70,8 +70,7 @@ $(function (){
               <td>{{$v->title_author}}</td>
               <td>{{$v->title_name}}</td>
               <td>{{$v->sort}}</td>
-              <td>{{$v->zan}}<input class="vipinput" type="text" /><a
-                class="vsAdd">增加</a></td>
+              <td><span>{{$v->zan}}</span><input id="num" class="vipinput" type="text"><a data-id="{{$v->id}}" class="vsAdd" javascript:;>增加</a></td>
               <td>{{$v->created_at}}</td>
               <td><a href="connoisseuradd.html"><img class="operation"
                   src="img/update.png"></a> <img class="operation delban"
@@ -116,5 +115,32 @@ $(".no").click(function(){
   $(".banDel").hide();
 });
 // 广告弹出框 end
+</script>
+@stop
+@section('js')
+<script type="text/javascript">
+  $(".vsAdd").click(function(){
+    var obj = $(this);
+    var num = $(this).prev().val();
+    var id = $(this).data('id');
+    if(isNaN(num)){
+      alert('请输入数字');
+      return false;
+    }
+    $.ajax({
+      type:'get',
+      url:"{{url('admin/ajax/title')}}",
+      data:{'num':num,'id':id},
+      success:function(msg){
+        if(msg == 0){
+          alert('修改失败');
+          return false;
+        }
+        alert('修改成功');
+        obj.prev().val('');
+        obj.prev().prev().html(msg)
+      }
+    })
+  })
 </script>
 @stop

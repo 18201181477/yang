@@ -12,51 +12,45 @@
 			<!-- user页面样式 -->
 			<div class="connoisseur">
 				<div class="conform">
-					<form>
+					<form action="{{url('admin/userAdd')}}" method="post">
+					{{csrf_field()}}
 						<div class="cfD">
-							<input class="userinput" type="text" placeholder="输入用户名" />-
-							<input class="userinput vpr" type="text" placeholder="输入用户密码" />
-							<button class="userbtn">添加</button>
+							<input name="name" class="userinput" type="text" placeholder="输入用户名" />-
+							<input name="password" class="userinput vpr" type="text" placeholder="输入用户密码" />
+							<input type="submit" class="userbtn" value="添加">
 						</div>
 					</form>
+					<div style="color:red">@if(\Session::has('message')){{\Session::get('message')}}@endif</div>
 				</div>
 				<!-- user 表格 显示 -->
 				<div class="conShow">
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
 							<td width="66px" class="tdColor tdC">序号</td>
-							<td width="435px" class="tdColor">会员等级</td>
-							<td width="400px" class="tdColor">用户名</td>
-							<td width="630px" class="tdColor">添加时间</td>
+							<td width="435px" class="tdColor">管理员</td>
+							<td width="400px">状态</td>
+							<td width="435px" class="tdColor">创建时间</td>
 							<td width="130px" class="tdColor">操作</td>
 						</tr>
+						@foreach($data as $v)
 						<tr height="40px">
-							<td>1</td>
-							<td>运营专员</td>
-							<td>山下就只</td>
-							<td>2015-25-36 12:12</td>
+							<td>{{$v->id}}</td>
+							<td>{{$v->name}}</td>
+							<td>@if($v->status==0)正常使用@else账号锁定@endif</td>
+							<td>{{$v->created_at}}</td>
 							<td><a href="connoisseuradd.html"><img class="operation"
 									src="img/update.png"></a> <img class="operation delban"
 								src="img/delete.png"></td>
 						</tr>
+						@endforeach
 					</table>
 					
 					<div class="paging">
-						<!-------------------------------------------分页----------------------------------------------------------------->
+						
 						<div id="pageGro" class="cb">
-							<div class="pageUp">上一页</div>
-						    <div class="pageList">
-						        <ul>
-						            <li>1</li>
-						            <li>2</li>
-						            <li>3</li>
-						            <li>4</li>
-						            <li>5</li>
-						        </ul>
-						    </div>
-						    <div class="pageDown">下一页</div>
+							
 						</div>
-						<!-------------------------------------------END 分页----------------------------------------------------------------->
+					
 					</div>
 				</div>
 				<!-- user 表格 显示 end-->

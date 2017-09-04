@@ -55,7 +55,7 @@
                     <li class="weixin w3ls"><a href="#">
                     <span class="icons w3layouts"></span>
                     <span class="text w3layouts agileits">微信</span></a></li>
-                    <li class="weibo aits"><a href="#">
+                    <li class="weibo aits"><a href="https://api.weibo.com/oauth2/authorize?client_id=1047198682&response_type=code&redirect_uri=http://www.small3.com/login/weibo">
                     <span class="icons agileits"></span>
                     <span class="text w3layouts agileits">微博</span></a></li>
                     <div class="clear"> </div>
