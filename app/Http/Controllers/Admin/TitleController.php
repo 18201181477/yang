@@ -16,7 +16,7 @@ class TitleController extends Controller
             $data = $model->page(6);
     		return view('admin.title.index',['data'=>$data]);
     	} else {
-    		
+    		dd($res->input());
     		if ($model->add($res->input())) {
     			return redirect('admin/title')->withInput();
     		} else {
@@ -24,6 +24,18 @@ class TitleController extends Controller
     		}
     	}
     	
+    }
+
+    /**
+     * ajax增加点赞数
+     */
+    public function ajax(Request $res)
+    {   
+        // var_dump($res->input());die;
+        // var_dump(Title::ajaxUp($res->input()));
+        $result = Title::where('id',$res->input('id'))->first();
+        $result->zan += $res->input('num');
+        echo $result->save()?$result->zan:0;
     }
 
 

@@ -76,6 +76,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('aa',function(){
 
     });
+
+    //微博第三方
+    Route::any('login/weibo',['uses'=>'LoginController@weibo']);
+    Route::any('login/weibo_login',['uses'=>'LoginController@weibo_login']);
+
     //医院科室展示
     Route::get('index/offices','OfficesController@show');
     //医院科室添加页
@@ -175,12 +180,35 @@ Route::group(['middleware'=>['web','admin'],'namespace' => 'Admin'], function(){
         Route::get('main',function(){
             return view('admin.inc.backend_main');
         });
+
+        //ajax增加点赞数
+        Route::get('ajax/title','TitleController@ajax');
+
+        //增加后台管理
+        Route::post('userAdd','UserController@userAdd');
 	});
 });
 
 Route::group(['middleware'=>['web'],'namespace'=>'Admin'],function(){
     Route::match(['get','post'],'admin/login','LoginController@index');
 });
+
+Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
+    Route::group(['prefix'=>'hospitalback'],function(){
+
+         Route::get('index',['uses'=>'IndexController@index']);
+
+         Route::get('map',['uses'=>'MapController@map']);
+
+         Route::get('doctor',['uses'=>'DoctorController@doctor']);
+
+         Route::get('hospital',['uses'=>'HospitalController@hospital']);
+
+         Route::get('tables',['uses'=>'TablesController@tables']);
+
+    });
+});
+
 
 
 		

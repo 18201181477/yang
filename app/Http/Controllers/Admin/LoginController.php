@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\AdminModel;
+use App\Models\Admin;
 class LoginController extends Controller
 {
     public function index(Request $res)
@@ -32,11 +32,12 @@ class LoginController extends Controller
     		if ($res->input('captcha') != \Session::get('captcha')) {
     			return redirect()->back()->with('message','验证码错误');
     		}
-    		$model = new AdminModel;
+    		$model = new Admin;
 
-    		if ($model->auth($res->input())) {
-    			// echo 55;
-    			\Session::put('username',$res->input('Admin.name'));
+    		if ($id = $model->auth($res->input())) {
+    			$data = $res->input('Admin');
+                $data['id'] = $id;
+    			\Session::put('admin',$data);
     			
     			return redirect('admin/index');
     		} else {

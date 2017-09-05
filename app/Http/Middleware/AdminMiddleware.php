@@ -15,7 +15,7 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (!\Session::has('username')) {
+        if (!\Session::has('admin')) {
             return redirect('/admin/login');
         }
         return $next($request);

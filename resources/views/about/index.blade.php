@@ -40,7 +40,7 @@
        <a href="/"><span style="cursor:pointer" class="label label-primary">阅读全文</span></a>
     </ul>
 
-    <p class="dateview"><span>{{ $val->created_at }} </span><span>作者：{{$val->title_author}}</span></p>
+    <p class="dateview"><span>{{ $val->created_at }} </span><span>作者：{{$val->title_author}}</span><span>点赞数：{{$val->zan}}</span></p>
     @endforeach
     {{$data->render()}}
   </div>

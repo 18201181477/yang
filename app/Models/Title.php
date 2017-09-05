@@ -8,7 +8,7 @@ class Title extends Model
 {
 	protected $table = 'title';
 	
-	protected $fillable = ['id','title_name','title_img','title_conntent','title_author'];
+	protected $fillable = ['id','title_name','title_img','sort','title_conntent','title_author'];
     public function add($data)
     {
     	$data['title_img'] = \Session::get('imgPath');
@@ -27,4 +27,6 @@ class Title extends Model
     {
         return mb_substr($str,0,600,'UTF-8').'……';
     }
+
+   
 }
