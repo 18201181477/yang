@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('index.index');
 });
 
+
+
 // Route::get('member/info',[
 // 	'uses'=>'MemberController@info',
 // 	'as'=>'memberinfo',
@@ -91,6 +93,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('index/offspid','OfficesController@offspid');
     //科室医生展示页
     Route::get('index/doctor','DoctorController@showpage');
+
+    // 公共页面 pc
+    Route::any('/pc',function () {
+        return view('layouts.promt');
+    });
 
 });
 
@@ -193,7 +200,7 @@ Route::group(['middleware'=>['web'],'namespace'=>'Admin'],function(){
     Route::match(['get','post'],'admin/login','LoginController@index');
 });
 
-Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
+Route::group(['middleware'=>['web','hos'],'namespace' => 'Hospitalback'], function(){
     Route::group(['prefix'=>'hospitalback'],function(){
 
          Route::get('index',['uses'=>'IndexController@index']);
