@@ -30,6 +30,7 @@ class DepartmentController extends Controller
                 $arr2[$v['pid']]['son'][] = $v;
             }
         }
+        dd($arr);exit;
         return view('admin.department.department',['arr' => $arr2]);
     }
 
