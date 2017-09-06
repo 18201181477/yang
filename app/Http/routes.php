@@ -72,10 +72,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/queque/id/{id}',['as'=>'index/queque','uses'=>'ServiceController@queque']);
     //医院科室
     Route::get('/department/id/{id}',['as'=>'index/department','uses'=>'ServiceController@department']);
-
-    Route::get('aa',function(){
-
-    });
+    //回复
+    Route::any('reply',['uses'=>'ContactController@reply']);
 
     //微博第三方
     Route::any('login/weibo',['uses'=>'LoginController@weibo']);

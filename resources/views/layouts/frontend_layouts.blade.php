@@ -82,7 +82,7 @@
 					<li><a href="{{ URL::route('index/services') }}" class="{{Request::getPathInfo()=='/service' ? 'active':''}}"> <span data-hover="医疗服务">医疗服务</span></a></li>
 					@show
 					<li><a href="{{ URL::route('index/news') }}" class="{{Request::getPathInfo()=='/news' ? 'active':''}}"> <span data-hover="最新消息">最新消息</span></a></li>
-					<li><a href="{{ URL::route('index/contact') }}" class="{{Request::getPathInfo()=='/contact' ? 'active':''}}"> <span data-hover="联系我们">联系我们</span></a></li>
+					<li><a href="{{ URL::route('index/contact') }}" class="{{Request::getPathInfo()=='/contact' ? 'active':''}}"> <span data-hover="网站评论">网站评论</span></a></li>
 				</ul>
 				<!-- script-for-menu -->
 				<script>
