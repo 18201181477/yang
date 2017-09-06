@@ -2,7 +2,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\ContactModel;
@@ -25,5 +24,11 @@ class ContactController extends Controller
         {
             return redirect()->action('ContactController@contact');
         }
+    }
+
+    public function reply()
+    {
+        $message = $_REQUEST['message'];
+        
     }
 }

@@ -13,8 +13,6 @@ class IndexController extends Controller
 		// }
 		// echo \Hash::make();
 		return view('Index.index');
-	
-		
 	}
 	public function pay()
 	{
