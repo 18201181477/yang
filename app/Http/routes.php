@@ -59,8 +59,23 @@ Route::group(['middleware' => ['web']], function () {
 		return response($builder->output())->header('Content-type','image/jpeg');
 	});
 
-    //支付中间键
-    Route::get('pay',['middleware'=>'App\Http\Middleware\PayMiddleware','uses'=>'IndexController@pay']);
+    //pay支付
+    Route::get('pay',function(){
+        // 创建支付单。
+        $alipay = app('alipay.web');
+        $alipay->setOutTradeNo('420683199702063739');
+        $alipay->setTotalFee('0.1');
+        $alipay->setSubject('hghghg');
+        $alipay->setBody('hghghg');
+
+        // 跳转到支付页面。
+        return redirect()->to($alipay->getPayLink());
+    });
+    
+    Route::get('alipay',function(){
+        dd($_GET);
+    });
+
     //用户完善页面
     Route::get('index/perfect','PerfectController@perfect');
     //医院详情添加
