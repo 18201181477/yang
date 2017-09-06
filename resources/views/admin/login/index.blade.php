@@ -45,7 +45,7 @@
 			</div>
 			<!-- <div class="lgD" style="color:red">{{$errors->first('Admin.name')}}</div> -->
 			<div class="lgD">
-				<img class="img1" src="img/logPwd.png" /><input value="{{ old('Admin')['password']}}" name="Admin[password]" type="text"
+				<img class="img1" src="img/logPwd.png" /><input value="{{ old('Admin')['password']}}" name="Admin[password]" type="password"
 					placeholder="输入用户密码" />
 			</div>
 			<!-- <div class="lgD" style="color:red">{{$errors->first('Admin.password')}}</div> -->

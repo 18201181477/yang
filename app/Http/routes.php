@@ -191,6 +191,7 @@ Route::group(['middleware'=>['web','admin'],'namespace' => 'Admin'], function(){
 
 Route::group(['middleware'=>['web'],'namespace'=>'Admin'],function(){
     Route::match(['get','post'],'admin/login','LoginController@index');
+    Route::get('admin/goout','LoginController@goout');
 });
 
 Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
