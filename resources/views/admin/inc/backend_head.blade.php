@@ -17,11 +17,11 @@
 		</div>
 		<div class="headR">
 			<p class="p1">
-				欢迎，<span style="color:red">{{\Session::get('username')}}</span>管理员
+				欢迎，<span style="color:red">{{\Session::get('admin')['name']}}</span>管理员
 			</p>
 			<p class="p2">
 				<a href="#" class="resetPWD">重置密码</a>&nbsp;&nbsp;
-				<a href="log.html" target="_blank" class="goOut">退出</a>
+				<a href="javascript:;" target="_blank" class="goOut">退出</a>
 			</p>
 		</div>
 		<!-- onclick="{if(confirm(&quot;确定退出吗&quot;)){return true;}return false;}" -->
@@ -48,3 +48,12 @@
 请尊重他人劳动成果;
 转载请保留js代码链接 - www.jsdaima.com
 -->
+<script type="text/javascript">
+	$(".goOut").click(function(){
+		if(window.confirm('你确定退出吗？'))
+		{
+			// $(this).prop('target','_parent');
+			window.parent.location.href="{{url('admin/goout')}}";
+		}
+	})
+</script>

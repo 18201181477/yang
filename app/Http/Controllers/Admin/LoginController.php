@@ -47,5 +47,10 @@ class LoginController extends Controller
     	
     }
 
+    public function goout()
+    {
+        \Session::forget('admin');
+        return redirect('admin/login');
+    }
 
 }
