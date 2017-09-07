@@ -25,7 +25,22 @@
 				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 			});
 		});
+
+		function openDialog() {
+
+			Avgrund.show( "#default-popup" );
+
+		}
+
+		function closeDialog() {
+
+			Avgrund.hide();
+
+		}
+
 </script>
+<script type="text/javascript" src="js/avgrund.js"></script>
+<link rel="stylesheet" href="css/avgrund.css">       
 <!--//end-smoth-scrolling-->
 <style>
     #service{width:161px;height:290px;position:fixed;top:350px;right:0px; z-index:100;}
@@ -49,6 +64,7 @@
 @show
 </head>
 <body>
+
 	<!--header-->
 	<div class="header">
 		<div class="container">
@@ -60,10 +76,10 @@
 		</div>	
 		<div class="container">
 			<div class="header-logo">
-				<a href="{{URL::route('index/index')}}"><img src="images/logo.png" alt="logo"/></a>		
+				<a href="{{URL::route('index/index')}}"><img src="images/logo.png" alt="logo"/></a>	
 			</div>
 			<div class="header-info">
-				<h4><iframe width="360" scrolling="no" height="100" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=2&icon=1&num=2"></iframe></h4>
+				<h4><iframe width="360" scrolling="no" height="100" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1"></iframe></h4>
 			</div>			
 			<div class="clearfix"> </div>
 		</div>	
@@ -123,8 +139,7 @@
 	                                {{\Session::get('user')['name']}} <span class="caret"></span>
 	                        </a>
 	                        <ul class="dropdown-menu" role="menu">
-	                        	<li><a href="javascript:;">企业账号</a></li>
-	                        	<li><a href="{{url('index/perfect')}}">完善公司信息</a></li>
+	                        	<li><a href="{{url('hospitalback/index')}}">企业账号</a></li>
 	                            <li><a href="{{url('index/logout')}}">退出登录</a></li>
 	                        </ul>
 	                    </li>

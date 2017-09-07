@@ -59,8 +59,23 @@ Route::group(['middleware' => ['web']], function () {
 		return response($builder->output())->header('Content-type','image/jpeg');
 	});
 
-    //支付中间键
-    Route::get('pay',['middleware'=>'App\Http\Middleware\PayMiddleware','uses'=>'IndexController@pay']);
+    //pay支付
+    Route::get('pay',function(){
+        // 创建支付单。
+        $alipay = app('alipay.web');
+        $alipay->setOutTradeNo('420683199702063739');
+        $alipay->setTotalFee('0.1');
+        $alipay->setSubject('hghghg');
+        $alipay->setBody('hghghg');
+
+        // 跳转到支付页面。
+        return redirect()->to($alipay->getPayLink());
+    });
+    
+    Route::get('alipay',function(){
+        dd($_GET);
+    });
+
     //用户完善页面
     Route::get('index/perfect','PerfectController@perfect');
     //医院详情添加
@@ -191,20 +206,40 @@ Route::group(['middleware'=>['web','admin'],'namespace' => 'Admin'], function(){
 
 Route::group(['middleware'=>['web'],'namespace'=>'Admin'],function(){
     Route::match(['get','post'],'admin/login','LoginController@index');
+    Route::get('admin/goout','LoginController@goout');
 });
 
+/**
+ * 医院用户管理后台
+ */
+
 Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
-    Route::group(['prefix'=>'hospitalback'],function(){
-
+    Route::group(['prefix'=>'hos'],function(){
+        //后台首页展示
          Route::get('index',['uses'=>'IndexController@index']);
-
-         Route::get('map',['uses'=>'MapController@map']);
-
-         Route::get('doctor',['uses'=>'DoctorController@doctor']);
-
-         Route::get('hospital',['uses'=>'HospitalController@hospital']);
-
+        //详情管理页面
+         Route::get('details',['uses'=>'DetailsController@details']);
+        //详情添加
+         Route::post('add',['uses'=>'DetailsController@add']);
+        //科室管理页面
+         Route::get('offices',['uses'=>'OfficesController@offices']);
+        //科室添加页面
+         Route::get('addpage',['uses'=>'OfficesController@addpage']);
+        //科室多级联动展示查询
+        Route::post('offspid',['uses'=>'OfficesController@offspid']);
+        //科室多级联动展示查询
+        Route::post('officeadd',['uses'=>'OfficesController@officeadd']);
+        //医院科室删除
+        Route::post('officesdel',['uses'=>'OfficesController@officesdel']);
+        //医生管理页面
+         Route::get('doctor',['uses'=>'DoctorController@Doctorshow']);
+        //值班管理页面
          Route::get('tables',['uses'=>'TablesController@tables']);
+
+        //地图页面
+         // Route::get('tables',['uses'=>'TablesController@tables']);
+         
+          // Route::get('pc/',['uses'=>'TablesController@tables']);
 
     });
 });
