@@ -107,6 +107,10 @@ Route::group(['middleware' => ['web']], function () {
     //科室医生展示页
     Route::get('index/doctor','DoctorController@showpage');
 
+    Route::get('show_all/{id}',['as'=>'index/show_all','uses'=>'AboutController@show']);
+    //ajax点赞
+    Route::get('about/zan','AboutController@zan');
+
 });
 
 // Route::group(['middleware' => 'web'], function () {
