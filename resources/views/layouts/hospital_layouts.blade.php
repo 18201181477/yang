@@ -49,34 +49,42 @@
             </div>
 
             <ul class="nav">
-                <li class="index">
+                 <li>
                     <a href="index">
-                        <i class="ti-bell"></i>
-                        <p>首页</p>
+                        <i class="ti-map"></i>
+                        <p>医院首页</p>
                     </a>
                 </li>
                 <li>
-                    <a href="hospital">
+                    <a href="details">
+                        <i class="ti-map"></i>
+                        <p>详情管理</p>
+                    </a>
+                </li>
+                 <li class="offices">
+                    <a href="offices">
+                        <i class="ti-view-list-alt"></i>
+                        <p>科室管理</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="doctor">
                         <i class="ti-user"></i>
-                        <p>医院</p>
+                        <p>医生管理</p>
+                    </a>
+                </li>
+                
+               
+                <li>
+                    <a href="tables">
+                        <i class="ti-bell"></i>
+                        <p>值班管理</p>
                     </a>
                 </li>
                 <li>
                     <a href="map">
                         <i class="ti-map"></i>
                         <p>地图</p>
-                    </a>
-                </li>
-                <li class="doctor">
-                    <a href="doctor">
-                        <i class="ti-view-list-alt"></i>
-                        <p>医生</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="tables">
-                        <i class="ti-bell"></i>
-                        <p>随便</p>
                     </a>
                 </li>
             </ul>

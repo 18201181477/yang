@@ -19,6 +19,7 @@ class CreateHospitalTable extends Migration
             $table->string('image',50)->comment('图片');//图片
             $table->text('profile')->comment('简介');//简介
             $table->string('address',50)->comment('地址');//地址
+            $table->string('register',50)->comment('医院等级');
             $table->float('x');//
             $table->float('y');//
             $table->string('url',30)->comment('网址');//网址

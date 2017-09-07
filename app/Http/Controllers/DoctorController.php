@@ -14,6 +14,8 @@ use app\Models\OffsHosModel;
  */
 class DoctorController extends Controller
 {
-  
+     public function showpage(){
+     	return view('Perfect.doctor');
+     }
 }
 ?>
