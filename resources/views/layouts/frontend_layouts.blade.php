@@ -139,7 +139,7 @@
 	                                {{\Session::get('user')['name']}} <span class="caret"></span>
 	                        </a>
 	                        <ul class="dropdown-menu" role="menu">
-	                        	<li><a href="{{url('hospitalback/index')}}">企业账号</a></li>
+	                        	<li><a href="{{url('hos/index')}}">企业账号</a></li>
 	                            <li><a href="{{url('index/logout')}}">退出登录</a></li>
 	                        </ul>
 	                    </li>

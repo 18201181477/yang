@@ -31,10 +31,6 @@ class DetailsController extends Controller
 	                  }
 	           }
        }
-
-
-
-
         public function add(Request $res)
     {  
        $session = \Session::get('user');
@@ -85,9 +81,9 @@ class DetailsController extends Controller
 
         if($res){
            \SESSION::put('hos_id',$res);
-            return redirect('hospitalback/index');
+            return redirect('hos/index');
         }else{
-            return redirect('hospitalback/details');
+            return redirect('hos/details');
         }
     }
     else
@@ -98,10 +94,10 @@ class DetailsController extends Controller
          // dd($upadd);
          if($upadd){
            \SESSION::put('hos_id',$hos_id);
-            return redirect('hospitalback/index');
+            return redirect('hos/index');
         }
         else{
-            return redirect('hospitalback/map');
+            return redirect('hos/map');
         }
       }
    

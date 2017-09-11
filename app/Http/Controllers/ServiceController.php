@@ -15,7 +15,6 @@ class ServiceController extends Controller
     {
         $name = isset($_GET['search'])?$_GET['search']:'';
 
-
         $arr = Hospital::where('name','like','%'.$name.'%')->get()->toArray();
         
     	return view('service.index',['arr'=>$arr]);

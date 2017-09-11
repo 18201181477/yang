@@ -27,7 +27,7 @@ class OfficesController extends Controller
            $offsid = $model->hospital_useselect('offs_hos',['hosid'=>$res['id']],'offsid');
 
            if (empty($offsid)) {
-                return  redirect('hospitalback/addpage'); 
+                return  redirect('hos/addpage'); 
                }  
 
             foreach ($offsid as $k => $v) {
@@ -106,7 +106,7 @@ class OfficesController extends Controller
            }
           }
         
-             return redirect('hospitalback/addpage');
+             return redirect('hos/addpage');
           
     }
 

@@ -13,7 +13,7 @@
 					<div class="thumbnail">
 						<div class="moments-bottom">
 							<a href="{{url('/info',['id',$val['id']])}}">
-								<img src="/img/<?=$val['image']?>" class="img-responsive zoom-img " alt="">				
+								<img src="/img/<?=$val['image']?>" class="img-responsive zoom-img " alt="" style="width:640px;height:275px;">				
 							</a>
 						</div>
 						<div class="caption services-caption">

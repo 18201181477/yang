@@ -135,7 +135,7 @@ class AuthController extends Controller
                     $email=$data['email'];
                     $flag = Mail::send('emails.test',['name'=>"'".$name."'"],function($message) use($email){
                         $to=$email;
-                        $message ->to($to)->subject('杨晶杰的医疗服务网站提醒您:');
+                        $message ->to($to)->subject('医疗服务网站提醒您:');
                     });
 
             }

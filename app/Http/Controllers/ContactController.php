@@ -14,6 +14,7 @@ class ContactController extends Controller
         $arr=$contactmodel->contactall();
         return view('contact.index',['arr'=>$arr]);
     }
+    
     public function contactadd()
     {
         $param=$_REQUEST;

@@ -22,7 +22,7 @@
         <div class="page">
             <img src="img/coin02.png" /><span><a href="javascript:;">科室展示</a>
             <div class="add" style="float:right;display: inline-block;height: 20px;">
-                <a class="addA" href="{{url('hospitalback/addpage')}}" style="color:#fff">添加科室&nbsp;&nbsp;+</a>
+                <a class="addA" href="{{url('hos/addpage')}}" style="color:#fff">添加科室&nbsp;&nbsp;+</a>
             </div>
         </div>
     </div>
@@ -104,7 +104,7 @@
         if(window.confirm('此操作将删除该科室？')){
             $.ajax({
                 type: "POST",
-                url: "{{url('hospitalback/officesdel')}}",
+                url: "{{url('hos/officesdel')}}",
                 data: "id="+id+"&_token="+csrf,
                 success: function(msg){
                 if(msg == 1){
@@ -119,27 +119,6 @@
         }
     });
 
-    //删除科室
-    // $(document).on('click','.del2',function(){
-    //     var id = $(this).next().val();
-    //     var csrf = $('#csrf').val();
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "/admin/departmentdel",
-    //         data: "id="+id+"&_token="+csrf,
-    //         dataType:'json',
-    //         success: function(msg){
-    //             $(mag).each(function(k,v){
-    //                    if(v == 1){
-    //                 location.reload();
-    //             }else{
-    //                 alert('删除失败，请稍后再试');
-    //             }
-
-    //             })
-    //                      }
-    //     });
-    // });
 </script>
 </html>
 @stop

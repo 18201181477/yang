@@ -60,13 +60,13 @@ Route::group(['middleware' => ['web']], function () {
 	});
 
     //pay支付
-    Route::get('pay',function(){
+    Route::get('pay/{name?}',function($name='挂号支付'){
         // 创建支付单。
         $alipay = app('alipay.web');
-        $alipay->setOutTradeNo('420683199702063739');
-        $alipay->setTotalFee('0.1');
-        $alipay->setSubject('hghghg');
-        $alipay->setBody('hghghg');
+        $alipay->setOutTradeNo('420683199702063740');
+        $alipay->setTotalFee('0.01');
+        $alipay->setSubject($name);
+        $alipay->setBody($name);
 
         // 跳转到支付页面。
         return redirect()->to($alipay->getPayLink());

@@ -17,7 +17,7 @@
 </head>
 <body>
 <div class="add" style="float:right;display: inline-block;height: 20px;">
-                <a class="addA" href="{{url('hospitalback/offices')}}" style="color:#fff">返回列表&nbsp;&nbsp;+</a>
+                <a class="addA" href="{{url('hos/offices')}}" style="color:#fff">返回列表&nbsp;&nbsp;+</a>
             </div>
 <div id="pageAll">
 
@@ -37,7 +37,7 @@
                 <span>添加科室</span>
             </div>
              
-            <form action="{{url('hospitalback/officeadd')}}" method="post">
+            <form action="{{url('hos/officeadd')}}" method="post">
                 {{csrf_field()}}
                 
                 <div class="baBody">
@@ -69,7 +69,7 @@
        var ob = $(this)
        $.ajax({
            type: "POST",
-           url: "{{url('hospitalback/offspid')}}",
+           url: "{{url('hos/offspid')}}",
            data: "_token={{csrf_token()}}&pid="+pid,
            dataType:'json',
            success: function(msg){

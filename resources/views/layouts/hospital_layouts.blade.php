@@ -43,8 +43,8 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="#" class="simple-text">
-                    Creative Tim
+                <a href="{{url('/service')}}" class="simple-text">
+                    Hospital home
                 </a>
             </div>
 
