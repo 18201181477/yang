@@ -51,7 +51,6 @@
  <script type="text/javascript">
         $(function(){
             var url = "{{url('service')}}";
-            
             var time = setInterval(function(){
                 var startTime = $('.loginTime').text()/1;
                 var endTime = startTime-1;
