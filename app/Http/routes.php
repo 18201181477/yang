@@ -105,6 +105,20 @@ Route::group(['middleware' => ['web']], function () {
     //科室医生展示页
     Route::get('index/doctor','DoctorController@showpage');
 
+    Route::get('show_all/{id}',['as'=>'index/show_all','uses'=>'AboutController@show']);
+    //ajax点赞
+    Route::get('about/zan','AboutController@zan');
+
+    //qq第三方登陆
+    Route::any('index/qq_login',['uses'=>'LoginController@qq_login']);
+    Route::any('login/yan',['uses'=>'LoginController@yan']);
+    Route::any('login/user_bind',['uses'=>'LoginController@user_bind']);
+
+     // 公共页面 pc
+    Route::any('/pc',function () {
+        return view('layouts.promt');
+    });
+
 });
 
 // Route::group(['middleware' => 'web'], function () {
@@ -116,9 +130,7 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware'=>['web','admin'],'namespace' => 'Admin'], function(){
 	Route::group(['prefix'=>'admin'],function(){
-        Route::get('index',function(){
-            return view('admin.index.index');
-        });
+        Route::any('index',['uses'=>'HomeController@index']);
         Route::get('home',['uses'=>'HomeController@home']);
 
 
@@ -171,6 +183,25 @@ Route::group(['middleware'=>['web','admin'],'namespace' => 'Admin'], function(){
         Route::any('memberSave',['uses'=>'MemberController@memberSave']);
 
 
+        // 权限---用户
+        Route::any('BackUser',['uses'=>'BackUserController@index']);
+        Route::any('BackUserAdd',['uses'=>'BackUserController@UserAdd']);
+        Route::any('BackUserShow',['uses'=>'BackUserController@show']);
+
+
+        // 权限---角色
+        Route::any('BackRoleAdd',['uses'=>'BackRoleController@RoleAdd']);
+        Route::any('BackRoleShow',['uses'=>'BackRoleController@RoleShow']);
+        Route::any('BackRoleDel',['uses'=>'BackRoleController@RoleDel']);
+        Route::any('BackRoleSave',['uses'=>'BackRoleController@RoleSave']);
+
+
+        // 权限--
+        Route::any('BackMenu',['uses'=>'BackMenuController@MenuAdd']);
+        Route::any('BackMenuAdd',['uses'=>'BackMenuController@MenuAdd']);
+        Route::any('BackMenuShow',['uses'=>'BackMenuController@MenuShow']);
+
+
         //科室
         Route::get('departmentindex',['uses'=>'DepartmentController@department']);
         Route::any('departmentadd',['uses'=>'DepartmentController@departmentadd']);
@@ -184,9 +215,7 @@ Route::group(['middleware'=>['web','admin'],'namespace' => 'Admin'], function(){
         });
 
         //套模板
-        Route::get('left',function(){
-            return view('admin.inc.backend_left');
-        });
+        Route::get('left',['uses'=>'HomeController@index_left']);
         Route::get('head',function(){
             return view('admin.inc.backend_head');
         });
@@ -235,9 +264,9 @@ Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
          Route::get('tables',['uses'=>'TablesController@tables']);
 
         //地图页面
-         // Route::get('tables',['uses'=>'TablesController@tables']);
+        // Route::get('tables',['uses'=>'TablesController@tables']);
          
-          // Route::get('pc/',['uses'=>'TablesController@tables']);
+        // Route::get('pc/',['uses'=>'TablesController@tables']);
 
     });
 });
