@@ -267,7 +267,6 @@ Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
 
         //地图页面
         // Route::get('tables',['uses'=>'TablesController@tables']);
-         
         // Route::get('pc/',['uses'=>'TablesController@tables']);
 
     });

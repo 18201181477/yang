@@ -37,12 +37,11 @@ class LoginController extends Controller
         $ch = curl_init();
          curl_setopt($ch, CURLOPT_URL, $url);
          curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-         curl_setopt($ch, CURLOPT_POST, 1);
          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
          curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
          $output = curl_exec($ch);
          $weibo_user_message = json_decode($output,true);
-         print_r($weibo_user_message);die;
+         // print_r($weibo_user_message);die;
         if($_POST){
             //获取微博用户手机号 邮箱 入库
             $user_data = [
