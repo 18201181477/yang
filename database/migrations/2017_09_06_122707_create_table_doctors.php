@@ -13,8 +13,8 @@ class CreateTableDoctors extends Migration
     public function up()
     {
         Schema::create('doctors', function (Blueprint $table) {
-            $table->increments('id');
-             $table->char('name',20)->comment('医生名');
+            $table->increments('doc_id');
+             $table->char('docname',20)->comment('医生名');
 
             $table->string('school',150)->comment('毕业院校');
 

@@ -15,15 +15,20 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 </head>
 <body>
+ <div class="add" style="float:right;display: inline-block;height: 20px;">
+                <a class="addA" href="{{url('hos/doctor')}}" style="color:#fff">列表展示&nbsp;&nbsp;+</a>
+            </div>
     <div id="pageAll">
         
         <div class="page ">
+
         <form action="{{url('hos/doctoradd')}}" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="<?PHP echo csrf_token(); ?>"> 
             <!-- 上传广告页面样式 -->
             <div class="banneradd bor">
                 <div class="baTop">
                     <span>医生添加</span>
+
                 </div>
                 <div class="baBody">
                     <div class="bbD">
@@ -96,7 +101,7 @@
        var ob = $(this)
        $.ajax({
            type: "POST",
-           url: "{{url('hos/offspid')}}",
+           url: "{{url('hos/docoffs')}}",
            data: "_token={{csrf_token()}}&pid="+pid,
            dataType:'json',
            success: function(msg){

@@ -37,7 +37,7 @@ class bannerModel extends Model
 	}
 
 	/**
- * IN查询单条数据
+ * IN查询数据
  * @param  [type] $tablename [description] 要操作的表名
  * @param  [type] $where     [description]查询的条件 为索引数组
  * @param  string $zi        [description]需要查询的字段 

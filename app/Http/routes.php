@@ -237,8 +237,14 @@ Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
 
         
         //医生管理页面
-         Route::get('doctor',['uses'=>'DoctorController@Doctorshow']);
-          //医生信息添加
+         Route::any('doctor',['uses'=>'DoctorController@doctorshow']);
+         //医生删除
+         Route::post('doctordel',['uses'=>'DoctorController@doctordel']);
+         //医生添加页面
+         Route::get('doctorpage',['uses'=>'DoctorController@Doctorpage']);
+          //医生添加页面科室二级分类
+         Route::post('docoffs',['uses'=>'DoctorController@docoffs']);
+        //医生信息添加
         Route::post('doctoradd',['uses'=>'DoctorController@doctoradd']);
         //值班管理页面
          Route::get('tables',['uses'=>'TablesController@tables']);
