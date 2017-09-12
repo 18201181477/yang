@@ -13,10 +13,10 @@ class TitleController extends Controller
     {
         $model = new Title;
     	if ($res->isMethod('GET')) {
-            $data = $model->page(6);
+            $data = $model->page(6,$res->input());
     		return view('admin.title.index',['data'=>$data]);
     	} else {
-    		dd($res->input());
+    		// dd($res->input());
     		if ($model->add($res->input())) {
     			return redirect('admin/title')->withInput();
     		} else {

@@ -34,16 +34,14 @@ $(function (){
       <!-- vip页面样式 -->
       <div class="vip">
         <div class="conform">
-          <form>
+          <form action="{{url('admin/title')}}" method="get">
             <div class="cfD">
               时间段：<input class="vinput mh_date" type="text" readonly="true" />&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
               <input class="vinput mh_date" type="text" readonly="true" />
             </div>
             <div class="cfD">
-              <input class="addUser" type="text" placeholder="输入用户名/ID/手机号/城市" />
+              <input value="{{$_GET['name'] or ''}}" class="addUser" name="name" type="text" placeholder="输入作者" />
               <button class="button">搜索</button>
-              <a class="addA addA1" href="vipadd.html">新增会员+</a> <a
-                class="addA addA1 addA2" href="vipadd.html">密码重置</a>
             </div>
           </form>
         </div>
@@ -78,7 +76,7 @@ $(function (){
             </tr>
             @endforeach
           </table>
-          <div class="paging">{{$data->render()}}</div>
+          <div class="paging"><?php echo $data->appends(['name'=>isset($_GET['name'])?$_GET['name']:''])->render()?></div>
         </div>
         <!-- vip 表格 显示 end-->
       </div>

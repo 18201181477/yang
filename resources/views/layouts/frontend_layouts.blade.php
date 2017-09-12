@@ -63,7 +63,7 @@
 				<a href="{{URL::route('index/index')}}"><img src="images/logo.png" alt="logo"/></a>		
 			</div>
 			<div class="header-info">
-				<h4><iframe width="360" scrolling="no" height="100" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=2&icon=1&num=2"></iframe></h4>
+				<h4><iframe width="360" scrolling="no" height="100" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=10&icon=10&num=1"></iframe></h4>
 			</div>			
 			<div class="clearfix"> </div>
 		</div>	

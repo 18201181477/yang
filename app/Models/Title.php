@@ -18,9 +18,15 @@ class Title extends Model
     	return $this::create($data)?true:false;
     }
 
-    public function page($num=6)
+    public function page($num=6,$res=null)
     {
-        return $this::paginate($num);
+        $name = empty($res['name'])?'':$res['name'];
+        // \DB::connection()->enableQueryLog(); // 开启查询日志
+        $result = self::where("title_author",'like','%'.$name.'%')->paginate(6);//sql语句
+        // $query = \DB::getQueryLog(); // 获取查询日志
+        // dump($query); // 即可查看执行的sql，传入的参数等等
+       
+        return $result;
     }
 
     static public function str($str)
@@ -28,5 +34,5 @@ class Title extends Model
         return mb_substr($str,0,600,'UTF-8').'……';
     }
 
-   
+    
 }

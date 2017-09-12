@@ -49,13 +49,13 @@
             <div class="social-icons w3layouts agileits">
                 <p>- 其他方式登录 -</p>
                 <ul>
-                    <li class="qq"><a href="#">
+                    <li class="qq"><a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101427412&redirect_uri=http://demo.yang.com/index/qq_login&state=xiaoqing">
                     <span class="icons w3layouts agileits"></span>
                     <span class="text w3layouts agileits">QQ</span></a></li>
                     <li class="weixin w3ls"><a href="#">
                     <span class="icons w3layouts"></span>
                     <span class="text w3layouts agileits">微信</span></a></li>
-                    <li class="weibo aits"><a href="https://api.weibo.com/oauth2/authorize?client_id=1047198682&response_type=code&redirect_uri=http://www.small3.com/login/weibo">
+                    <li class="weibo aits"><a href="https://api.weibo.com/oauth2/authorize?client_id=1047198682&response_type=code&redirect_uri=http://demo.yang.com/login/weibo">
                     <span class="icons agileits"></span>
                     <span class="text w3layouts agileits">微博</span></a></li>
                     <div class="clear"> </div>
