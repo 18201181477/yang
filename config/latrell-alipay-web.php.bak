@@ -11,5 +11,5 @@ return [
 	'notify_url' => 'http://www.hyuru.com',
 
 	// 页面跳转同步通知页面路径。
-	'return_url' => 'laravel.com'
+	'return_url' => 'http://demo.yang.com/alipay'
 ];

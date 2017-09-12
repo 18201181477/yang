@@ -63,7 +63,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('pay',function(){
         // 创建支付单。
         $alipay = app('alipay.web');
-        $alipay->setOutTradeNo('1564687156');
+        $alipay->setOutTradeNo('887789077777');
         $alipay->setTotalFee('0.1');
         $alipay->setSubject('hghghg');
         $alipay->setBody('hghghg');
