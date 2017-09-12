@@ -27,4 +27,10 @@ class ContactController extends Controller
             return redirect()->action('ContactController@contact');
         }
     }
+
+    public function server()
+    {
+        echo "<pre>";
+        print_r($_SERVER);
+    }
 }

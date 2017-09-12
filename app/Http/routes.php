@@ -88,9 +88,7 @@ Route::group(['middleware' => ['web']], function () {
     //医院科室
     Route::get('/department/id/{id}',['as'=>'index/department','uses'=>'ServiceController@department']);
 
-    Route::get('aa',function(){
-
-    });
+    Route::get('/server',['uses'=>'ContactController@server']);
 
     //微博第三方
     Route::any('login/weibo',['uses'=>'LoginController@weibo']);
