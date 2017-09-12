@@ -123,12 +123,7 @@
 	                                {{\Session::get('user')['name']}} <span class="caret"></span>
 	                        </a>
 	                        <ul class="dropdown-menu" role="menu">
-<<<<<<< HEAD
 	                        	<li><a href="{{url('hos/index')}}">企业账号</a></li>
-=======
-	                        	<li><a href="javascript:;">企业账号</a></li>
-	                        	<li><a href="{{url('index/perfect')}}">完善公司信息</a></li>
->>>>>>> 544cc0ff1146e50e827612e86598916d6d3f6e49
 	                            <li><a href="{{url('index/logout')}}">退出登录</a></li>
 	                        </ul>
 	                    </li>
