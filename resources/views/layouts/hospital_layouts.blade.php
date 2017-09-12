@@ -26,9 +26,15 @@
     <link href="css/demo.css" rel="stylesheet" />
 
     <!--  Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"> -->
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="css/themify-icons.css" rel="stylesheet">
+      <!-- 新 Bootstrap 核心 CSS 文件 -->  
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">  
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->  
+    <script src="js/jquery2.1.4.min.js"></script>  
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->  
+    <script src="bootstrap/js/bootstrap.min.js"></script>  
 
 </head>
 <body>

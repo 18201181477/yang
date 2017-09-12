@@ -5,201 +5,129 @@
 @stop
 
 @section('content')
-         <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-4 col-md-5">
-                        <div class="card card-user">
-                            <div class="image">
-                                <img src="assets/img/background.jpg" alt="..."/>
-                            </div>
-                            <div class="content">
-                                <div class="author">
-                                  <img class="avatar border-white" src="assets/img/faces/face-2.jpg" alt="..."/>
-                                  <h4 class="title">Chet Faker<br />
-                                     <a href="#"><small>@chetfaker</small></a>
-                                  </h4>
-                                </div>
-                                <p class="description text-center">
-                                    "I like the way you work it <br>
-                                    No diggity <br>
-                                    I wanna bag it up"
-                                </p>
-                            </div>
-                            <hr>
-                            <div class="text-center">
-                                <div class="row">
-                                    <div class="col-md-3 col-md-offset-1">
-                                        <h5>12<br /><small>Files</small></h5>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h5>2GB<br /><small>Used</small></h5>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <h5>24,6$<br /><small>Spent</small></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Team Members</h4>
-                            </div>
-                            <div class="content">
-                                <ul class="list-unstyled team-members">
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-xs-3">
-                                                        <div class="avatar">
-                                                            <img src="assets/img/faces/face-0.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xs-6">
-                                                        DJ Khaled
-                                                        <br />
-                                                        <span class="text-muted"><small>Offline</small></span>
-                                                    </div>
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <base href="/backend/" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>医生展示</title>
+    <link rel="stylesheet" type="text/css" href="css/css.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="js/page.js" ></script> -->
+</head>
 
-                                                    <div class="col-xs-3 text-right">
-                                                        <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-xs-3">
-                                                        <div class="avatar">
-                                                            <img src="assets/img/faces/face-1.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xs-6">
-                                                        Creative Tim
-                                                        <br />
-                                                        <span class="text-success"><small>Available</small></span>
-                                                    </div>
+<body>
 
-                                                    <div class="col-xs-3 text-right">
-                                                        <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-xs-3">
-                                                        <div class="avatar">
-                                                            <img src="assets/img/faces/face-3.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xs-6">
-                                                        Flume
-                                                        <br />
-                                                        <span class="text-danger"><small>Busy</small></span>
-                                                    </div>
+<div id="pageAll">
 
-                                                    <div class="col-xs-3 text-right">
-                                                        <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-7">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Edit Profile</h4>
-                            </div>
-                            <div class="content">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label>Company</label>
-                                                <input type="text" class="form-control border-input" disabled placeholder="Company" value="Creative Code Inc.">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Username</label>
-                                                <input type="text" class="form-control border-input" placeholder="Username" value="michael23">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control border-input" placeholder="Email">
-                                            </div>
-                                        </div>
-                                    </div>
+    <div class="pageTop">
 
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control border-input" placeholder="Company" value="Chet">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control border-input" placeholder="Last Name" value="Faker">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control border-input" placeholder="Home Address" value="Melbourne, Australia">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" class="form-control border-input" placeholder="City" value="Melbourne">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <input type="text" class="form-control border-input" placeholder="Country" value="Australia">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="number" class="form-control border-input" placeholder="ZIP Code">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>About Me</label>
-                                                <textarea rows="5" class="form-control border-input" placeholder="Here can be your description" value="Mike">Oh so, your weak rhyme
-You doubt I'll bother, reading into it
-I'll probably won't, left to my own devices
-But that's the difference in our opinions.</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-info btn-fill btn-wd">Update Profile</button>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
+        <div class="page">
+            <img src="img/coin02.png" /><span><a href="javascript:;">科室展示</a>
+            <div class="add" style="float:right;display: inline-block;height: 20px;">
+                <a class="addA" href="{{url('hos/doctorpage')}}" style="color:#fff">人员添加&nbsp;&nbsp;+</a>
             </div>
         </div>
+    </div>
+    <div class="page">
+        <!-- banner页面样式 -->
+        <input type="hidden" name="_token" value="<?PHP echo csrf_token(); ?>" id="csrf">
+        <div class="banner">
+       <form action="{{url('hos/doctor')}}" method="get">
+                    {{csrf_field()}}
+                        <div class="cfD">
+                            <input name="docname" class="userinput" type="text" placeholder="姓名查找" />-
+                            <input name="name" class="userinput vpr" type="text" placeholder="科室查找" />
+                            <input type="submit" class="userbtn" value="搜索">
+                        </div>
+                    </form>
+                
+            <!-- banner 表格 显示 -->
+            <div class="banShow">
+                <table border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="30px" class="tdColor tdC">序号</td>
+                        <td width="90px" class="tdColor">姓名</td>
+                        <td width="120px" class="tdColor">所属科室</td>
+                        <td width="75px" class="tdColor">从业年限</td>
+                        <td width="150px" class="tdColor">毕业院校</td>
+                        <td width="150px" class="tdColor">主治方向</td>
+                        <td width="60px" class="tdColor">是否专家</td>
+                        <td width="100px" class="tdColor">职称</td>
+                        <td width="150px" class="tdColor">操作</td>
+                    </tr>
+                    <?php  $a = 1 ; foreach($arr as $k => $v){?>
+                    <tr class="parent">
+                        <td><?php echo $a++ ?></td>
+                        <td><?php echo $v['docname']?></td>
+                        <td><?php echo $v['name']?></td>
+                        <td><?php echo $v['age']?>年</td>
+                        <td><?php echo $v['school']?></td>
+                        <td><?php echo $v['main']?></td>
+                        <td><?php echo $v['is_expert']?'是':'否';?></td>
+                        <td>
+                        <?php 
+                       $ary = ['主任医师','教授','副主任医师','医师','实习医师'] ;
+                       foreach ($ary as $kk => $vv) {
+                           if ($kk==$v['title']) {
+                              echo $vv;
+                           }
+                       }
+                      ?>
+                        </td>
+                        <td><a href="javascript:;"><img class="operation" src="img/update.png"></a><span class="del"><img class="operation delban" src="img/delete.png"></span><input type="hidden" value="<?php echo $v['doc_id'] ?>"/>
+                        </td>
+                    </tr>
+                 
+                    <?php }?>
+                </table>
+                <style>
+                        .pagination{
+                            margin-left: 400px;
+                        }
+                </style>
+                <?php  echo $arr->links() ?>
+
+                
+            </div>
+            <!-- banner 表格 显示 end-->
+        </div>
+        <!-- banner页面样式end -->
+    </div>
+
+</div>
+
+
+</body>
+
+<script type="text/javascript">
+
+    //删除父级科室
+    $(document).on('click','.del',function(){
+        // var dd = $('.del').next().val();
+        // alert(dd)
+        // return
+        var id = $(this).next().val();
+        var csrf = $('#csrf').val();
+        if(window.confirm('此操作将删除该医生信息？')){
+            $.ajax({
+                type: "POST",
+                url: "{{url('hos/doctordel')}}",
+                data: "id="+id+"&_token="+csrf,
+                success: function(msg){
+                if(msg == 1){
+                    location.reload();
+                }else{
+                    alert('删除失败，请稍后再试');
+                }
+
+             
+                }
+            });
+        }
+    });
+
+   
+</script>
+</html>
 @stop

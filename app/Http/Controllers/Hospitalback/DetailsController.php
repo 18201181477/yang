@@ -27,6 +27,7 @@ class DetailsController extends Controller
 	             return view('hospitalback.details.details',['res'=>$res]);
 	             }
 	             else{
+                
 	         	     return view('hospitalback.details.details');
 	                  }
 	           }
@@ -37,8 +38,8 @@ class DetailsController extends Controller
 
         public function add(Request $res)
     {  
-       $session = \Session::get('user');
-       $uid = $session['id'];
+        $session = \Session::get('user');
+        $uid = $session['id'];
         //上传图片
         $file = $res->file('image');
 
@@ -75,33 +76,31 @@ class DetailsController extends Controller
             );
 
         $model = new \App\Models\BannerModel();
-       //根据uid查询是否已经完善信息
-       $res = $model->hospital_useselone('hospital',['user_id'=>$uid]);
-        // $res = bannerModel::where(['user_id'=>$uid])->first();
-        // dd($res);
+         //根据uid查询是否已经完善信息
+        $res = $model->hospital_useselone('hospital',['user_id'=>$uid]);
+        
    if (empty($res)) 
     {    
         $res = $model->hospital_add('hospital',$arr);
-
+          
         if($res){
            \SESSION::put('hos_id',$res);
-            return redirect('hospitalback/index');
+            return redirect('hos/index');
         }else{
-            return redirect('hospitalback/details');
+            return redirect('hos/details');
         }
     }
     else
       {
         $hos_id=$res['id'];
         $upadd = $model->hospital_wherupdate('hospital',['id'=>$hos_id],$arr);
-         // $upadd = bannerModel::where(['id'=>$hos_id])->update($arr);
-         // dd($upadd);
+         
          if($upadd){
            \SESSION::put('hos_id',$hos_id);
-            return redirect('hospitalback/index');
+            return redirect('hos/index');
         }
         else{
-            return redirect('hospitalback/map');
+            return redirect('hos/map');
         }
       }
    

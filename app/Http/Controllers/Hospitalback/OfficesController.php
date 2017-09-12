@@ -10,50 +10,61 @@ class OfficesController extends Controller
 {
     public function offices()
     {
-    	// return view('hospitalback.doctor.doctor');
+    	
 
-    	 $model = new \App\Models\BannerModel();
+    	  $model = new \App\Models\BannerModel();
         $data = \Session::get('user');
         $user_id = $data['id'];
-        
-        // $res = bannerModel::where(['user_id'=>$user_id])->first();
-        $res = $model->hospital_useselone('hospital',['user_id'=>$user_id]);
-
+        // dd($model);
+        $res = \Session::get('hos_id');
+         // echo $res;die;
         if (!empty($res)) 
           {
-          
-           \SESSION::put('hos_id',$res['id']);
-         //查询医院科室与医院的中间表
-           $offsid = $model->hospital_useselect('offs_hos',['hosid'=>$res['id']],'offsid');
-
+        
+            //查询医院科室与医院的中间表
+           $offsid = $model->hospital_useselect('offs_hos',['hosid'=>$res],'offsid');
+            // dd($offsid);
            if (empty($offsid)) {
-                return  redirect('hospitalback/addpage'); 
+                   //跳转添加页面
+                return  redirect('hos/addpage'); 
+
                }  
 
             foreach ($offsid as $k => $v) {
+
                 $oid[]= $v['offsid'];
+
             }
         
-         //当前医院 查询科室
+             //当前医院 查询科室
             $office = $model->hospital_useselin('offices','id',$oid);
           
             foreach($office as $k => $v){
-               if($v['pid'] == 0){
-                    $date[$v['id']] = $v;
-                }
-          }
-         
-           foreach($office as $k => $v){
-               if($v['pid'] != 0){
-                   $date[$v['pid']]['hosid'] = $res['id'] ;
-                   $date[$v['pid']]['son'][] = $v;
-                 }
-         }
 
+               if($v['pid'] == 0){
+
+                    $date[$v['id']] = $v;
+
+                     }
+
+                 }
+         
+            foreach($office as $k => $v){
+
+               if($v['pid'] != 0){
+
+                   $date[$v['pid']]['hosid'] = $res['id'] ;
+
+                   $date[$v['pid']]['son'][] = $v;
+
+                   }
+
+                }
+                       
              return view('hospitalback.offices.offices',['arr'=>$date]);
         
-      }
-          else{
+            }
+        else{
             echo '先完善医院信息';
           }
     }
@@ -61,20 +72,26 @@ class OfficesController extends Controller
 
      //添加页面
   public function addpage(){
-      $model = new \App\Models\BannerModel();
+       $model = new \App\Models\BannerModel();
       //医院用户id
        $user_id = \Session::get('user')['id'];
-       //医院详情id
-      $hos_id = \Session::get('hos_id');
+       if ($user_id) {
+           //医院详情id
+           $hos_id = \Session::get('hos_id');
+       
+          if (!empty($hos_id)) 
+            {   
+                $data = $model->hospital_useselect('offices',['pid'=>0]);      
+            }
 
-        if (!empty($hos_id)) 
-        {   
-            $data = $model->hospital_useselect('offices',['pid'=>0]);      
-        }
-
-         
-         $data = json_decode(json_encode($data));
+             
+          $data = json_decode(json_encode($data));
           return view('hospitalback.offices.officesadd',['data' => $data]);
+       }
+       else{
+         return   redirect('home');
+       }
+       
 }
 
 //多级科室显示
@@ -106,7 +123,7 @@ class OfficesController extends Controller
            }
           }
         
-             return redirect('hospitalback/addpage');
+             return redirect('hos/addpage');
           
     }
 
