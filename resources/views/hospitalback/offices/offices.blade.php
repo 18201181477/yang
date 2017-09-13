@@ -59,7 +59,7 @@
                                 <td>--<?php echo $vv['name']?></td>
                                 <td><?php echo $v['name']?></td>
                                 <td>
-                                <a href="{{url('index/doctor')}}">查看医生</a>
+                                <a href="{{url('hos/doctor')}}?name=<?php echo $vv['name'] ?>">查看医生</a>
                                 </td>
                                 <td><a href="javascript:;"><img class="operation" src="img/update.png">
                                     </a> <span class="del"><img class="operation delban" src="img/delete.png"></span><input
