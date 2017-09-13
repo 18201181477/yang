@@ -279,7 +279,12 @@ Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
           //医生添加页面科室二级分类
          Route::post('docoffs',['uses'=>'DoctorController@docoffs']);
         //医生信息添加
-        Route::post('doctoradd',['uses'=>'DoctorController@doctoradd']);
+         Route::post('doctoradd',['uses'=>'DoctorController@doctoradd']);
+        //医生信息修改页面
+         Route::any('doctorup',['uses'=>'DoctorController@doctoruppage']);
+        //医生信息添加
+         Route::post('doctorupadd',['uses'=>'DoctorController@doctorupadd']);
+
         //值班管理页面
          Route::get('tables',['uses'=>'TablesController@tables']);
 

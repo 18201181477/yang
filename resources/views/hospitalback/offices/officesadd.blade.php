@@ -48,7 +48,8 @@
                             @foreach($data as $k => $v)
                                 <option value="<?php echo $v->id ?>" >{{$v->name}}</option>
                             @endforeach
-                        </select>    
+                        </select>   
+                        <span id="offs_id"></span> 
                     </div>
                     <div class="bbD">
                         <p class="bbDP">
@@ -80,7 +81,7 @@
             })
             str += "</select>"   
     
-            ob.after(str)           
+           $('#offs_id').html(str)        
             }
 
 });
