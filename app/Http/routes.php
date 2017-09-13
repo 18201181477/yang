@@ -32,7 +32,7 @@ Route::get('/', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
+Route::get('kang','IndexController@kang');
 Route::group(['middleware' => ['web']], function () {
     Route::get('home','IndexController@index');
    	Route::get('member/info',['uses'=>'MemberController@info']);
@@ -120,6 +120,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::any('/pc',function () {
         return view('layouts.promt');
     });
+
+    Route::any('/ServiceShow',['uses'=>'ServiceController@ServiceShow']);
 
 });
 
@@ -230,6 +232,9 @@ Route::group(['middleware'=>['web','admin'],'namespace' => 'Admin'], function(){
 
         //增加后台管理
         Route::post('userAdd','UserController@userAdd');
+
+         //广告营销
+        Route::get('ad','AdController@index');
 	});
 });
 
@@ -281,6 +286,8 @@ Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
         //地图页面
         // Route::get('tables',['uses'=>'TablesController@tables']);
         // Route::get('pc/',['uses'=>'TablesController@tables']);
+        
+       
 
     });
 });

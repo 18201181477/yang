@@ -8,6 +8,7 @@ use App\Offices;
 use App\Queque;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
 
 class ServiceController extends Controller
 {
@@ -15,10 +16,39 @@ class ServiceController extends Controller
     {
         $name = isset($_GET['search'])?$_GET['search']:'';
 
+        $type_id = isset($_GET['type_id'])?$_GET['type_id']:'';
 
-        $arr = Hospital::where('name','like','%'.$name.'%')->get()->toArray();
+        $arr = Hospital::where('name','like','%'.$name.'%')->limit(6)->get()->toArray();
+
+        if(!empty($type_id)) {
+            $arr = Hospital::where('name','like','%'.$name.'%')->where('h_type','=',$type_id)->limit(6)->get()->toArray();
+        }
+
         
-    	return view('service.index',['arr'=>$arr]);
+        // 分类
+        $type_info = DB::table('hospital_type')->get();
+        $type_info = json_decode(json_encode($type_info), true);
+
+        $data['search'] = $name;
+        
+    	return view('service.index',['arr'=>$arr,'data'=>$data,'info'=>$type_info]);
+    }
+
+    public function ServiceShow() {
+        // 搜索条件
+        $name = isset($_GET['search'])?$_GET['search']:'';
+        // 当前页
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+        $eid = isset($_GET['eid']) ? $_GET['eid'] : '';
+        // 每页显示条数
+        $page_size = 6;
+        // 偏移量
+        $offset = ($page-1) * $page_size;
+        // echo $eid;exit;
+        $arr = Hospital::where('id','>',$eid)->where('name','like','%'.$name.'%')->limit($page_size)->get()->toArray();
+        // dd($arr);
+        echo json_encode($arr);
     }
 
     //医院详细信息
