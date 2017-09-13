@@ -36,8 +36,8 @@
        <form action="{{url('hos/doctor')}}" method="get">
                     {{csrf_field()}}
                         <div class="cfD">
-                            <input name="docname" class="userinput" type="text" placeholder="姓名查找" />-
-                            <input name="name" class="userinput vpr" type="text" placeholder="科室查找" />
+                            <input name="docname" class="userinput" type="text" placeholder="姓名查找" value="<?php echo $data['docname'] ?>" />-
+                            <input name="name" class="userinput vpr" type="text" placeholder="科室查找" value="<?php echo $data['name'] ?>" />
                             <input type="submit" class="userbtn" value="搜索">
                         </div>
                     </form>
@@ -56,7 +56,7 @@
                         <td width="100px" class="tdColor">职称</td>
                         <td width="150px" class="tdColor">操作</td>
                     </tr>
-                    <?php  $a = 1 ; foreach($arr as $k => $v){?>
+                    <?php  $a = 1 ; foreach($data['arr'] as $k => $v){?>
                     <tr class="parent">
                         <td><?php echo $a++ ?></td>
                         <td><?php echo $v['docname']?></td>
@@ -75,7 +75,7 @@
                        }
                       ?>
                         </td>
-                        <td><a href="javascript:;"><img class="operation" src="img/update.png"></a><span class="del"><img class="operation delban" src="img/delete.png"></span><input type="hidden" value="<?php echo $v['doc_id'] ?>"/>
+                        <td><a href="{{url('hos/doctorup')}}?id=<?php echo $v['doc_id'] ?>"><img class="operation" src="img/update.png"></a><span class="del"><img class="operation delban" src="img/delete.png"></span><input type="hidden" value="<?php echo $v['doc_id'] ?>"/>
                         </td>
                     </tr>
                  
@@ -86,7 +86,7 @@
                             margin-left: 400px;
                         }
                 </style>
-                <?php  echo $arr->links() ?>
+                <?php  echo $data['arr']->appends(['docname'=>isset($_GET['docname'])?$_GET['docname']:null,'name'=>isset($_GET['name'])?$_GET['name']:null])->links() ?>
 
                 
             </div>
