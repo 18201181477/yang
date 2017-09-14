@@ -13,9 +13,7 @@ use Gregwar\Captcha\CaptchaBuilder;
 |
 */
 
-Route::get('/', function () {
-    return view('index.index');
-});
+Route::get('/', 'IndexController@index');
 
 // Route::get('member/info',[
 // 	'uses'=>'MemberController@info',
