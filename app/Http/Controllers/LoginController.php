@@ -176,7 +176,7 @@ class LoginController extends Controller
            $fure = DB::table('users_oauth')->insertGetId($user_oauth_data);
           if($id && $fure)
           {
-             return view('index.index');
+             return redirect()->action('IndexController@index');
           }
     }
 
