@@ -47,9 +47,7 @@ $(".slider").YuxiSlider({
 	<!--gallery-->
 	<div class="gallery" id="gallery">
 		<div class="col-md-6 gallery-left">
-			<h4>Letraset sheets</h4>
-			<p>Lorem Ipsum was popularised in the with the release of Letraset sheets contai ningthe with the release of </p>
-		</div>
+			</div>
 		<div class="col-md-6 gallery-right">
 			<div class="gallery-grid-a">
 				<h4>Letraset sheets</h4>

@@ -172,6 +172,7 @@ button.btn.btn-default:focus {
 /*--//header--*/
 /*--banner--*/
 .banner{
+<<<<<<< HEAD
   min-height: 600px;
   background: no-repeat 0px -196px;
   background-size: cover;
@@ -180,6 +181,10 @@ button.btn.btn-default:focus {
 .banner img{
   min-height: 600px;
   background: no-repeat 0px -196px;
+=======
+  min-height: 650px;
+  background: url(../images/928014.jpg)no-repeat 0px -196px;
+>>>>>>> a6c5a85e42573acbf9e99d77042af461a23e7b6e
   background-size: cover;
 }
 .banner-text {
