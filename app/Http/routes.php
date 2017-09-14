@@ -116,6 +116,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::any('login/yan',['uses'=>'LoginController@yan']);
     Route::any('login/user_bind',['uses'=>'LoginController@user_bind']);
 
+    //轮播图
+    //Route::any('/index',['uses'=>'LoginController@yan']);
+
      // 公共页面 pc
     Route::any('/pc',function () {
         return view('layouts.promt');

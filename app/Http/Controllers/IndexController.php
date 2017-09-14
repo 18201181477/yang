@@ -6,8 +6,10 @@ class IndexController extends Controller
 {
 	
 	public function index()
-	{
-		return view('Index.index');	
+	{	
+		$data = \DB::table('hospital')->orderBy('phone','desc')->take(5)->get();
+
+		return view('Index.index')->with('data',$data);	
 	}
 	public function pay()
 	{
