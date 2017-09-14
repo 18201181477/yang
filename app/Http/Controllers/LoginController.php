@@ -6,13 +6,14 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Session;
+use App\User;
 
 class LoginController extends Controller
 {
    public function weibo(){
 
        $code = $_GET['code'];
-//print_r($code);die;
+      //print_r($code);die;
        $url = "https://api.weibo.com/oauth2/access_token?client_id=1047198682&client_secret=81a80502abbfa6266f859d3b2a417679&grant_type=authorization_code&code=$code&redirect_uri=http://demo.yang.com/login/weibo";
        $ch = curl_init();
        curl_setopt($ch, CURLOPT_URL, $url);
@@ -61,15 +62,16 @@ class LoginController extends Controller
                 'type' => '3',//微博用户
                 'create_time' => time()
             ];
-            // print_r($user_oauth_data);die;
+            Session::put('user',$user_data);
             DB::table('users_oauth')->insert($user_oauth_data);
-
-return redirect()->action('IndexController@index');
+            return redirect()->action('IndexController@index');
         }else{
 
-            $res = DB::table('users_oauth')->where(['open_id' => Session::get('uid')])->first();
+            $res = DB::table('users_oauth')->where(['open_id' => Session::pull('uid')])->first();
             if($res){
-                //之前使用微博登陆过
+              $data = User::where('id',$res->user_id)->first()->toArray();
+              Session::put('user',$data);
+              //之前使用微博登陆过
               return redirect()->action('IndexController@index');
             }else{
                 //第一次使用微博登录
@@ -115,9 +117,12 @@ return redirect()->action('IndexController@index');
         //查询该用户是否绑定手机号或邮箱
         //print_r(strlen($openid));die;
           $res = DB::table('users_oauth')->where('open_id','=',$openid)->first();
+          
           if($res)
           {
-              //之前使用扣扣登陆过
+            $data = User::where('id',$res->user_id)->first()->toArray();
+            \Session::put('user',$data);
+            //之前使用扣扣登陆过
             return redirect()->action('IndexController@index');
            }else{
             return redirect()->action('LoginController@user_bind', ['status' => 0, 'nickname' => $user_message['nickname']]);

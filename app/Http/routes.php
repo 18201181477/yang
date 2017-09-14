@@ -92,6 +92,7 @@ Route::group(['middleware' => ['web']], function () {
 
     });
 
+
     //微博第三方
     Route::any('login/weibo',['uses'=>'LoginController@weibo']);
     Route::any('login/weibo_login',['uses'=>'LoginController@weibo_login']);
@@ -296,6 +297,7 @@ Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
 
     });
 });
+
 
 
 

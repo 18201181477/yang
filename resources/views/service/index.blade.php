@@ -9,10 +9,14 @@
 		<div class="container">
 
 <div class="btn-group">
-	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">医院分类 
+
+	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+	<?php echo isset($type) ? $type['tname'] : '医院分类'?> 
 		<span class="caret"></span>
 	</button>
+
 	<ul class="dropdown-menu" role="menu">
+		<li><a href="{{url('service')}}">查看全部</a></li>
 		<?php foreach($info as $val){?>
 			<li><a href="{{url('service')}}?type_id=<?php echo $val['tid']?>"><?php echo $val['tname']?></a></li>
 		<?php

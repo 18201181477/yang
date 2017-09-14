@@ -20,18 +20,24 @@ class ServiceController extends Controller
 
         $arr = Hospital::where('name','like','%'.$name.'%')->limit(6)->get()->toArray();
 
+        $type = ['tname'=>'医院分类'];
+
         if(!empty($type_id)) {
+            // 查看分类
+            $type = DB::table('hospital_type')->where('tid','=',$type_id)->first();
+
+            $type = json_decode(json_encode($type), true);
+
             $arr = Hospital::where('name','like','%'.$name.'%')->where('h_type','=',$type_id)->limit(6)->get()->toArray();
         }
 
-        
         // 分类
         $type_info = DB::table('hospital_type')->get();
         $type_info = json_decode(json_encode($type_info), true);
 
         $data['search'] = $name;
         
-    	return view('service.index',['arr'=>$arr,'data'=>$data,'info'=>$type_info]);
+    	return view('service.index',['arr'=>$arr,'data'=>$data,'info'=>$type_info,'type'=>$type]);
     }
 
     public function ServiceShow() {
