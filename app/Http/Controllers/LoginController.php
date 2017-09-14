@@ -164,7 +164,8 @@ class LoginController extends Controller
                 'created_at' => date('Y-m-d H:i:s',time()),
                 'updated_at' => date('Y-m-d H:i:s',time()),
              ];
-            // print_r($three);die;
+             Session::put('user',$three);
+             // print_r($three);die;
           $id = DB::table('users')->insertGetId($three);
             $user_oauth_data = [
                 'open_id' => \Session::get('openid'),
