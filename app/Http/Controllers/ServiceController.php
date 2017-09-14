@@ -12,27 +12,39 @@ use DB;
 
 class ServiceController extends Controller
 {
+    /**
+     * [service description] 医院信息展示
+     * @return [type] [description]
+     */
     public function service()
     {
-        $name = isset($_GET['search'])?$_GET['search']:'';
+        // 搜索条件  名称
+        $name = isset($_GET['search']) ? $_GET['search'] : '';
 
-        $type_id = isset($_GET['type_id'])?$_GET['type_id']:'';
+        // 分类搜索  ID
+        $type_id = isset($_GET['type_id']) ? $_GET['type_id'] : '';
 
+        // 每页展示6条
         $arr = Hospital::where('name','like','%'.$name.'%')->limit(6)->get()->toArray();
 
+        // 定义分类数组
         $type = ['tname'=>'医院分类'];
 
+        // 判断是否存在分类搜索
         if(!empty($type_id)) {
-            // 查看分类
+            // 分类 名臣 查询
+            $arr = Hospital::where('name','like','%'.$name.'%')->where('h_type','=',$type_id)->limit(6)->get()->toArray();
+
+            // 查询医院分类
             $type = DB::table('hospital_type')->where('tid','=',$type_id)->first();
 
+            // 转化数组
             $type = json_decode(json_encode($type), true);
-
-            $arr = Hospital::where('name','like','%'.$name.'%')->where('h_type','=',$type_id)->limit(6)->get()->toArray();
         }
 
         // 分类
         $type_info = DB::table('hospital_type')->get();
+
         $type_info = json_decode(json_encode($type_info), true);
 
         $data['search'] = $name;
@@ -40,20 +52,35 @@ class ServiceController extends Controller
     	return view('service.index',['arr'=>$arr,'data'=>$data,'info'=>$type_info,'type'=>$type]);
     }
 
+    /**
+     * [ServiceShow description] 医院ajax 搜索
+     * @return json
+     */
     public function ServiceShow() {
         // 搜索条件
         $name = isset($_GET['search'])?$_GET['search']:'';
+
         // 当前页
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
 
+        // 最后一条id
         $eid = isset($_GET['eid']) ? $_GET['eid'] : '';
+
+        // 分类id
+        $tid = isset($_GET['tid']) ? $_GET['tid'] : '';
+
         // 每页显示条数
         $page_size = 6;
         // 偏移量
         $offset = ($page-1) * $page_size;
-        // echo $eid;exit;
+
         $arr = Hospital::where('id','>',$eid)->where('name','like','%'.$name.'%')->limit($page_size)->get()->toArray();
-        // dd($arr);
+
+        // 判断是否有分类
+        if($tid) {
+            $arr = Hospital::where('id','>',$eid)->where('name','like','%'.$name.'%')->where('h_type','=',$tid)->limit($page_size)->get()->toArray();
+        }
+     
         echo json_encode($arr);
     }
 

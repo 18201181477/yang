@@ -9,12 +9,10 @@
 		<div class="container">
 
 <div class="btn-group">
-
-	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-	<?php echo isset($type) ? $type['tname'] : '医院分类'?> 
+	<button type="button" id="bbt" tid="<?php echo isset($type['tid']) ? $type['tid'] : ''?>" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+	<?php echo isset($type) ? $type['tname'] : '医院分类';?> 
 		<span class="caret"></span>
 	</button>
-
 	<ul class="dropdown-menu" role="menu">
 		<li><a href="{{url('service')}}">查看全部</a></li>
 		<?php foreach($info as $val){?>
@@ -72,11 +70,11 @@
 <script>
 
 
-function get_page(page, search, eid) {
+function get_page(page, search, eid, tid) {
 	$.ajax({
 		type:'get',
 		url:'{{url("ServiceShow")}}',
-		data:'page='+page+'&search='+search+'&eid='+eid,
+		data:'page='+page+'&search='+search+'&eid='+eid+'&tid='+tid,
 		dataType:'json',
 		success:function(e) {
 			var str = ''
@@ -108,13 +106,18 @@ function get_page(page, search, eid) {
 }
 
 $('#page').click(function(){
+	// 当前页
 	var page = $(this).attr('page')
+	// 搜索条件 名臣
 	var search = $('#page').attr('ser')
+	// 最后一条id
 	var eid = $('.thumbnail').last().attr('eid')
+	// 搜索条件 分类
+	var tid = $('#bbt').attr('tid')
 
 	page = parseInt(page) + 1
 
-	get_page(page, search, eid)
+	get_page(page, search, eid, tid)
 })
 
 // $(function(){//页面第一次加载时
