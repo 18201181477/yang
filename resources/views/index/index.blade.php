@@ -4,54 +4,38 @@
 @section('content')
 <!--banner-->
 	<div class="banner">
-		<div class="container ">
-			<!-- banner-text Slider starts Here -->
-			<script src="js/responsiveslides.min.js"></script>
-			 <script>
-				// You can also use "$(window).load(function() {"
-					$(function () {
-					// Slideshow 4
-						$("#slider3").responsiveSlides({
-						auto: true,
-						pager:true,
-						nav:false,
-						speed: 500,
-						namespace: "callbacks",
-						before: function () {
-						$('.events').append("<li>before event fired.</li>");
-						},
-						after: function () {
-							$('.events').append("<li>after event fired.</li>");
-						}
-					});	
-				});
-			</script>
-			<!--//End-slider-script -->
-			<div  id="top" class="callbacks_container">
-				<ul class="rslides" id="slider3">
-					<li>
-						<div class="banner-text">		
-							<h1>We are here to care for you</h1>
-							<p>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-						</div>
-					</li>
-					<li>
-						<div class="banner-text">		
-							<h1>Lorem ip sum avai re for cayou</h1>
-							<p>Majority have sufferedorem lipsum available, but the  alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-						</div>
-					</li>
-					<li>
-						<div class="banner-text">		
-							<h1>Availf able lor emip cayou refor</h1>
-							<p>Randomised words orem ipsum available, but the majority have suffered alteration in some form, by injected humour, or which don't look even slightly believable.</p>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
+<link rel="stylesheet" href="css/lunbo.css">
+<div class="demo" style="width:1518px ; height:650px">
+<a style="margin-left: 300px;" class="control prev"></a><a style="margin-right: 300px;" class="control next abs"></a><!--自定义按钮，移动端可不写-->
+	<div class="slider"><!--主体结构，请用此类名调用插件，此类名可自定义-->
+	
+		<ul>
+			@foreach($data as $val)
+			<li><a href="{{url('/info',['id',$val->id])}}"><img src="/img/{{$val->image}}" alt="" /></a></li>
+			@endforeach
+			<!-- <li><a href="#"><img src="images/1.jpg" alt="两弯似蹙非蹙笼烟眉，一双似喜非喜含情目。" /></a></li>
+			<li><a href="#"><img src="images/2.jpg" alt="态生两靥之愁，娇袭一身之病。" /></a></li>
+			<li><a href="#"><img src="images/3.jpg" alt="泪光点点，娇喘微微。" /></a></li>
+			<li><a href="#"><img src="images/4.jpg" alt="闲静似娇花照水，行动如弱柳扶风。" /></a></li>
+			<li><a href="#"><img src="images/5.jpg" alt="心较比干多一窍，病如西子胜三分。" /></a></li> -->
+		</ul>
 	</div>
+</div>
+</div>
+
+	<script src="js/jquery.min.js"></script>
+<script src="js/YuxiSlider.jQuery.min.js"></script>
+<script>
+$(".slider").YuxiSlider({
+	width:1518, //容器宽度
+	height:650, //容器高度
+	control:$('.control'), //绑定控制按钮
+	during:4000, //间隔4秒自动滑动
+	speed:800, //移动速度0.8秒
+});
+</script>
 	<!--//banner-->
+
 	<!--banner-bottom-->
 	<div class="banner-bottom">
 		<div class="container">
@@ -88,7 +72,7 @@
 				<ul>
 					<li><img src="images/icon2.png" alt=""></li>
 					<li>
-						<h4>Quas molestias excep</h4>
+						<h4>21321121</h4>
 						<p>praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
 					</li>
 				</ul>

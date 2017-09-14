@@ -164,7 +164,8 @@ class LoginController extends Controller
                 'created_at' => date('Y-m-d H:i:s',time()),
                 'updated_at' => date('Y-m-d H:i:s',time()),
              ];
-            // print_r($three);die;
+             Session::put('user',$three);
+             // print_r($three);die;
           $id = DB::table('users')->insertGetId($three);
             $user_oauth_data = [
                 'open_id' => \Session::get('openid'),
@@ -175,7 +176,7 @@ class LoginController extends Controller
            $fure = DB::table('users_oauth')->insertGetId($user_oauth_data);
           if($id && $fure)
           {
-             return view('index.index');
+             return redirect()->action('IndexController@index');
           }
     }
 
