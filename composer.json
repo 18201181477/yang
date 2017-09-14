@@ -8,7 +8,7 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "gregwar/captcha": "^1.1",
-        "latrell/alipay": "dev-master"
+        "latrell/alipay": "^1.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -50,5 +50,11 @@
     },
     "config": {
         "preferred-install": "dist"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
     }
 }

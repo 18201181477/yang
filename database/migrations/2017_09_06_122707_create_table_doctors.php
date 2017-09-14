@@ -13,8 +13,8 @@ class CreateTableDoctors extends Migration
     public function up()
     {
         Schema::create('doctors', function (Blueprint $table) {
-            $table->increments('id');
-             $table->char('name',20)->comment('医生名');
+            $table->increments('doc_id');
+             $table->char('docname',20)->comment('医生名');
 
             $table->string('school',150)->comment('毕业院校');
 
@@ -30,9 +30,9 @@ class CreateTableDoctors extends Migration
 
             $table->tinyInteger('is_expert')->comment('是否是专家 1:是 0:否');
 
-            $table->integer('user_id')->comment('医院id');
-
-            $table->integer('ke_id')->comment('科室id');
+            $table->integer('hos_id')->comment('医院id');
+            $table->integer('offs_pid_id')->comment('所属主科室id');
+            $table->integer('offs_id')->comment('所属科室id');
             $table->timestamps();
         });
     }

@@ -61,8 +61,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('pay',function(){
         // 创建支付单。
         $alipay = app('alipay.web');
-        $alipay->setOutTradeNo('420683199702063739');
-        $alipay->setTotalFee('0.1');
+        $alipay->setOutTradeNo('55228858664558');
+        $alipay->setTotalFee('0.01');
         $alipay->setSubject('hghghg');
         $alipay->setBody('hghghg');
 
@@ -248,6 +248,8 @@ Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
          Route::get('details',['uses'=>'DetailsController@details']);
         //详情添加
          Route::post('add',['uses'=>'DetailsController@add']);
+
+
         //科室管理页面
          Route::get('offices',['uses'=>'OfficesController@offices']);
         //科室添加页面
@@ -258,8 +260,24 @@ Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
         Route::post('officeadd',['uses'=>'OfficesController@officeadd']);
         //医院科室删除
         Route::post('officesdel',['uses'=>'OfficesController@officesdel']);
+
+
+        
         //医生管理页面
-         Route::get('doctor',['uses'=>'DoctorController@Doctorshow']);
+         Route::any('doctor',['uses'=>'DoctorController@doctorshow']);
+         //医生删除
+         Route::post('doctordel',['uses'=>'DoctorController@doctordel']);
+         //医生添加页面
+         Route::get('doctorpage',['uses'=>'DoctorController@Doctorpage']);
+          //医生添加页面科室二级分类
+         Route::post('docoffs',['uses'=>'DoctorController@docoffs']);
+        //医生信息添加
+         Route::post('doctoradd',['uses'=>'DoctorController@doctoradd']);
+        //医生信息修改页面
+         Route::any('doctorup',['uses'=>'DoctorController@doctoruppage']);
+        //医生信息添加
+         Route::post('doctorupadd',['uses'=>'DoctorController@doctorupadd']);
+
         //值班管理页面
          Route::get('tables',['uses'=>'TablesController@tables']);
 

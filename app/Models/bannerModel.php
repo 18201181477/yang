@@ -19,7 +19,9 @@ class bannerModel extends Model
  * @return [type]            [description] 返回查询的数据 二维关联数组
  */
 	public function hospital_useselect($tablename,$where,$zi='*'){
+		
 		$data = json_encode(DB::table($tablename)->select($zi)->where($where)->get()) ;
+
 		return json_decode($data,true);
 	}
 /**
@@ -35,7 +37,7 @@ class bannerModel extends Model
 	}
 
 	/**
- * IN查询单条数据
+ * IN查询数据
  * @param  [type] $tablename [description] 要操作的表名
  * @param  [type] $where     [description]查询的条件 为索引数组
  * @param  string $zi        [description]需要查询的字段 
@@ -70,18 +72,15 @@ class bannerModel extends Model
 		return $data = DB::table($tablename)->where($where)->delete();
 		 
 	}
-
-	/**
-	  * limit查询
-	  * @param  [type] $tablename [description] 要操作的表名
-	  * @param  array  $where     [description] 
-	  * @return [type]            [description]
-	  */
-
-	// public function hospital_wherelimit($tablename,$where=array(),$){
-
-	// }
-	
+ //    *
+ //     * 分页
+ //     * @param  integer $num [description]每页显示条数
+ //     * @return [type]       [description]
+     
+	// public function page($num=6)
+ //    {
+ //        return $this::paginate($num);
+ //    }
 	
 
 }

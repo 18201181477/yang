@@ -23,7 +23,7 @@
 	<div id="pageAll">
 		
 		<div class="page ">
-		<form action="{{url('hospitalback/add')}}" method="post" enctype="multipart/form-data">
+		<form action="{{url('hos/add')}}" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="<?PHP echo csrf_token(); ?>"> 
 			<!-- 上传广告页面样式 -->
 			<div class="banneradd bor">

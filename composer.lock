@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bada6029b11b3189eeb0b5b33545ef9",
+    "content-hash": "70f7a0f7174fdaf421261610dad0516e",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -485,16 +485,16 @@
         },
         {
             "name": "latrell/alipay",
-            "version": "dev-master",
+            "version": "1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/latrell/Alipay.git",
-                "reference": "12fc43888410afddcd155d036bc4be0e7ea78b53"
+                "reference": "d395f4f7490ab56a50df71f01e06c266aa329034"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/latrell/Alipay/12fc43888410afddcd155d036bc4be0e7ea78b53.zip",
-                "reference": "12fc43888410afddcd155d036bc4be0e7ea78b53",
+                "url": "https://files.phpcomposer.com/files/latrell/Alipay/d395f4f7490ab56a50df71f01e06c266aa329034.zip",
+                "reference": "d395f4f7490ab56a50df71f01e06c266aa329034",
                 "shasum": ""
             },
             "require": {
@@ -527,7 +527,7 @@
                 "laravel",
                 "laravel 5"
             ],
-            "time": "2017-07-27T07:24:57+00:00"
+            "time": "2016-07-04T02:54:50+00:00"
         },
         {
             "name": "league/flysystem",
@@ -3281,9 +3281,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "latrell/alipay": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
