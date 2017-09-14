@@ -281,8 +281,13 @@ Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
          Route::post('doctorupadd',['uses'=>'DoctorController@doctorupadd']);
 
         //值班管理页面
-         Route::get('tables',['uses'=>'TablesController@tables']);
-
+         Route::get('rota',['uses'=>'RotaController@rotashow']);
+        //值班添加页面
+         Route::get('rotaaddpage',['uses'=>'RotaController@rotaaddpage']);
+         //医生值班信息添加
+         Route::post('rotaadd',['uses'=>'RotaController@rotaadd']);
+         //医生值班信息删除
+         Route::post('rotadel',['uses'=>'RotaController@rotadel']);
         //地图页面
         // Route::get('tables',['uses'=>'TablesController@tables']);
          

@@ -54,6 +54,7 @@
                         <td width="150px" class="tdColor">主治方向</td>
                         <td width="60px" class="tdColor">是否专家</td>
                         <td width="100px" class="tdColor">职称</td>
+                        <td width="100px" class="tdColor">值班安排</td>
                         <td width="150px" class="tdColor">操作</td>
                     </tr>
                     <?php  $a = 1 ; foreach($data['arr'] as $k => $v){?>
@@ -75,6 +76,7 @@
                        }
                       ?>
                         </td>
+                        <td><a href="{{url('hos/rota')}}?docid=<?php echo $v['doc_id'] ?>">查看值班</a></td>
                         <td><a href="{{url('hos/doctorup')}}?id=<?php echo $v['doc_id'] ?>"><img class="operation" src="img/update.png"></a><span class="del"><img class="operation delban" src="img/delete.png"></span><input type="hidden" value="<?php echo $v['doc_id'] ?>"/>
                         </td>
                     </tr>

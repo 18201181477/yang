@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
+    @section('css')
+    @show
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <title>@yield('title','后台首页')</title>
@@ -77,20 +79,6 @@
                     <a href="{{url('hos/doctor')}}">
                         <i class="ti-user"></i>
                         <p>医生管理</p>
-                    </a>
-                </li>
-                
-               
-                <li>
-                    <a href="{{url('hos/tables')}}">
-                        <i class="ti-bell"></i>
-                        <p>值班管理</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{url('hos/map')}}"> 
-                        <i class="ti-map"></i>
-                        <p>地图</p>
                     </a>
                 </li>
             </ul>
@@ -209,3 +197,4 @@
 
 
 </html>
+

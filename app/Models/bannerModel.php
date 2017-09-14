@@ -7,6 +7,12 @@ use DB;
 class bannerModel extends Model
 {
 	protected $table='hospital';
+	/**
+	 * 数据添加
+	 * @param  [type] $tablename [description]
+	 * @param  [type] $data      [description]
+	 * @return [type]            [description]
+	 */
 	public function hospital_add($tablename,$data)
 	{
 		return DB::table($tablename)->insertGetId($data);
