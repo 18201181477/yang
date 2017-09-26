@@ -1,7 +1,7 @@
 @extends('layouts.frontend_layouts')
 
 @section('content')
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+
 	<!--contact-->
 	<div class="contact">
 		<div class="container">
@@ -12,15 +12,14 @@
 						<table class="table">
 							<tr>
 								<td width="15%"></span><span class="badge badge-primary">{{$k+1}} . floor</span></td>
-								<td width="30%"><a href="javascript:;" class="name" title="{{$v->email}}">{{$v->name}}</a></td>
+								<td width="30%"><a href="javascript:;" title="{{$v->email}}">{{$v->name}}</a></td>
 								<td width="15%">{{$v->email}}</td>
 								<td width="15%">{{date('Y-m-d H:i:s',$v->addtime)}}</td>
-                                <td><input type="text" class="val" style="width:180px;"/></td>
-								<td><a href="javascript:;" class="rep">回复</a></td>
+								<td><a href="javascript:;">回复</a></td>
 							</tr>
 							<tr>
 								<td></td>
-								<td colspan="4"  id="cont">
+								<td colspan="4">
 									{{$v->message}}
 								</td>
 							</tr>
@@ -47,17 +46,6 @@
 	</div>
     <!--//contact-->
 @stop
-<script src="./jquery-1.8.3.min.js"></script>
 <script>
-    $(document).delegate('.rep','click',function(){
-        var name=$('.name').html();
-        var val=$('.val').val();
-        if(val=="")
-        {
-            alert('内容不能为空');
-            return false;
-        }
-        var str="<p>"+"杨晶杰对"+name+"的回复:"+val+";</p>";
-        $('#cont:last').append(str);
-    })
+alert(1)
 </script>

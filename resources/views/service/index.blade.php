@@ -4,6 +4,7 @@
 @stop
 
 @section('content')
+
 	<div class="services">
 		<div class="container">
 			<h3>Services overview</h3>
@@ -43,3 +44,4 @@
 		</div>
 	</div>	
 @stop
+

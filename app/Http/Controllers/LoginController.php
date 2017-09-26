@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -41,8 +40,6 @@ class LoginController extends Controller
         $url='https://api.weibo.com/2/users/show.json?access_token='.Session::get('access_token').'&uid='. Session::get('uid');
         $weibo_data=file_get_contents($url);
         $weibo_user_message = json_decode($weibo_data,true);
-
-
         if($_POST){
             //获取微博用户手机号 邮箱 入库
             $user_data = [
@@ -62,8 +59,6 @@ class LoginController extends Controller
                 'create_time' => time()
             ];
             DB::table('users_oauth')->insertGetId($user_oauth_data);
-
-
         }else{
 
 //            print_r(Session::get('uid'));die;
