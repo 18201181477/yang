@@ -1,9 +1,8 @@
-@extends('layouts.frontend_layouts')
-@section('title')
+<?php $__env->startSection('title'); ?>
 	医疗服务
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 	<div class="services">
 		<div class="container">
 			<div class="btn-group">
@@ -12,9 +11,9 @@
 				<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu">
-				<li><a href="{{url('service')}}">查看全部</a></li>
+				<li><a href="<?php echo e(url('service')); ?>">查看全部</a></li>
 				<?php foreach($info as $val){?>
-					<li><a href="{{url('service')}}?type_id=<?php echo $val['tid']?>"><?php echo $val['tname']?></a></li>
+					<li><a href="<?php echo e(url('service')); ?>?type_id=<?php echo $val['tid']?>"><?php echo $val['tname']?></a></li>
 				<?php
 				}
 				?>	
@@ -22,16 +21,16 @@
 			</div>
 			<h3>Services overview</h3>
 			<div class="row services-info" id="list">		
-				@foreach($arr as $val)	
+				<?php foreach($arr as $val): ?>	
 				<div class="col-sm-6 col-md-4 services-grids">
 					<div class="thumbnail" eid="<?php echo $val['id']?>">
 						<div class="moments-bottom">
-							<a href="{{url('/info',['id',$val['id']])}}">
+							<a href="<?php echo e(url('/info',['id',$val['id']])); ?>">
 								<img src="/img/<?=$val['image']?>" class="img-responsive zoom-img " alt="">				
 							</a>
 						</div>
 						<div class="caption services-caption">
-							<h4><a href="{{url('/info',['id',$val['id']])}}"><?=$val['name']?></a></h4>
+							<h4><a href="<?php echo e(url('/info',['id',$val['id']])); ?>"><?=$val['name']?></a></h4>
 							<p>
 							<?php
 								if (mb_strlen($val['profile'])>=10) {
@@ -44,10 +43,10 @@
 						</div>
 					</div>
 				</div>
-				@endforeach
+				<?php endforeach; ?>
 				<div class="clearfix"> </div>
 			</div>
-			<button type="button" id="page" class="btn btn-primary btn-lg" page="1" ser="{{$data['search']}}" >加载更多</button
+			<button type="button" id="page" class="btn btn-primary btn-lg" page="1" ser="<?php echo e($data['search']); ?>" >加载更多</button
 			<!--light-box-js -->
 				<script src="js/jquery.chocolat.js"></script>
 				<!--light-box-files -->
@@ -66,7 +65,7 @@ function get_page(page, search, eid, tid) {
 
 	$.ajax({
 		type:'get',
-		url:'{{url("ServiceShow")}}',
+		url:'<?php echo e(url("ServiceShow")); ?>',
 		data:'page='+page+'&search='+search+'&eid='+eid+'&tid='+tid,
 		dataType:'json',
 		success:function(e) {
@@ -125,4 +124,5 @@ $('#page').click(function(){
 // });
 
 </script> 
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.frontend_layouts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

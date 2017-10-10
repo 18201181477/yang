@@ -125,6 +125,7 @@ class AuthController extends Controller
         $model = new User;
         if ($data = $model->login($res->input())) {
             //echo "<pre>";print_r($data);exit;
+<<<<<<< HEAD
              //echo "<pre>";print_r(new Mail());exit;
             \Session::put('user',$data);
              /*   if(!empty($data['name']) && !empty($data['email']))
@@ -137,6 +138,21 @@ class AuthController extends Controller
                     });
 
             }*/
+=======
+
+                //echo "<pre>";print_r(new Mail());exit;
+               \Session::put('user',$data);
+
+                // if(!empty($data['name']) && !empty($data['email']))
+                // {
+                //     $name = $data['name'];
+                //     $email=$data['email'];
+                //     $flag = Mail::send('emails.test',['name'=>"'".$name."'"],function($message) use($email){
+                //         $to=$email;
+                //         $message ->to($to)->subject('杨晶杰的医疗服务网站提醒您:');
+                //     });
+                // }
+>>>>>>> develop
             return redirect('index');
         } else {
             return redirect()->back()->with('message','用户名或密码错误')->withInput();
