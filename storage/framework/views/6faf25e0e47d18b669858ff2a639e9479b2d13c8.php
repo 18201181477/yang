@@ -1,7 +1,4 @@
-@extends('layouts.frontend_layouts')
-
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!--banner-->
 	<div class="banner">
 <link rel="stylesheet" href="css/lunbo.css">
@@ -10,25 +7,14 @@
 	<div class="slider"><!--主体结构，请用此类名调用插件，此类名可自定义-->
 	
 		<ul>
-<<<<<<< HEAD
-			@foreach($data as $val)
-			<li><a href="{{url('/info',['id',$val->id])}}"><img src="/img/{{$val->image}}" alt="" /></a></li>
-			@endforeach
-			<!-- <li><a href="#"><img src="images/1.jpg" alt="两弯似蹙非蹙笼烟眉，一双似喜非喜含情目。" /></a></li>
-			<li><a href="#"><img src="images/2.jpg" alt="态生两靥之愁，娇袭一身之病。" /></a></li>
-			<li><a href="#"><img src="images/3.jpg" alt="泪光点点，娇喘微微。" /></a></li>
-			<li><a href="#"><img src="images/4.jpg" alt="闲静似娇花照水，行动如弱柳扶风。" /></a></li>
-			<li><a href="#"><img src="images/5.jpg" alt="心较比干多一窍，病如西子胜三分。" /></a></li> -->
-=======
-			<!-- @foreach($data as $val)
-			<li><a href="{{url('/info',['id',$val->id])}}"><img src="/img/{{$val->image}}" alt="" /></a></li>
-			@endforeach -->
+			<!-- <?php foreach($data as $val): ?>
+			<li><a href="<?php echo e(url('/info',['id',$val->id])); ?>"><img src="/img/<?php echo e($val->image); ?>" alt="" /></a></li>
+			<?php endforeach; ?> -->
 			<li><a href="#"><img src="images/1.jpg" alt="两弯似蹙非蹙笼烟眉，一双似喜非喜含情目。" /></a></li>
 			<li><a href="#"><img src="images/2.jpg" alt="态生两靥之愁，娇袭一身之病。" /></a></li>
 			<li><a href="#"><img src="images/3.jpg" alt="泪光点点，娇喘微微。" /></a></li>
 			<li><a href="#"><img src="images/4.jpg" alt="闲静似娇花照水，行动如弱柳扶风。" /></a></li>
 			<li><a href="#"><img src="images/5.jpg" alt="心较比干多一窍，病如西子胜三分。" /></a></li>
->>>>>>> 99411ebff62e64acdf0930c488064bcceebd24c6
 		</ul>
 	</div>
 </div>
@@ -41,11 +27,7 @@ $(".slider").YuxiSlider({
 	width:1518, //容器宽度
 	height:650, //容器高度
 	control:$('.control'), //绑定控制按钮
-<<<<<<< HEAD
-	during:4000, //间隔4秒自动滑动
-=======
 	during:3000, //间隔4秒自动滑动
->>>>>>> 99411ebff62e64acdf0930c488064bcceebd24c6
 	speed:800, //移动速度0.8秒
 });
 </script>
@@ -116,4 +98,5 @@ $(".slider").YuxiSlider({
 		</div>
 	</div>
 	<!--//work-->
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.frontend_layouts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
