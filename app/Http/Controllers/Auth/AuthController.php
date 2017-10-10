@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use Mail;
+
 class AuthController extends Controller
 {
     public $username = 'name';
@@ -129,7 +130,7 @@ class AuthController extends Controller
                 //echo "<pre>";print_r(new Mail());exit;
                \Session::put('user',$data);
 
-                if(!empty($data['name']) && !empty($data['email']))
+           /*     if(!empty($data['name']) && !empty($data['email']))
                 {
                     $name = $data['name'];
                     $email=$data['email'];
@@ -138,7 +139,7 @@ class AuthController extends Controller
                         $message ->to($to)->subject('杨晶杰的医疗服务网站提醒您:');
                     });
 
-            }
+            }*/
             return redirect('index');
         } else {
             return redirect()->back()->with('message','用户名或密码错误')->withInput();
