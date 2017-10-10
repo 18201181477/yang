@@ -14,6 +14,7 @@ class IndexController extends Controller
 	public function pay()
 	{
 		echo '支付成功';
+		echo 'hahaha';
 	}
 
 	public function kang()
