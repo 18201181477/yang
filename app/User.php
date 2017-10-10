@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    //protected $table='users';
     
     /**
      * The attributes that are mass assignable.
@@ -46,7 +47,11 @@ class User extends Authenticatable
 
     public function login($data)
     {
+       // echo "<pre>";print_r($data);
+        $num=abs(crc32($data['name']))%10;
+        $this->table='users_'.$num;
         $res = $this::where(['name'=>$data['name'],'password'=>md5($data['password'])])->first();
+ // echo $this::where(['name'=>$data['name'],'password'=>md5($data['password'])])->toSql();exit;
         return $res?$res->toArray():false;
     }
 }
