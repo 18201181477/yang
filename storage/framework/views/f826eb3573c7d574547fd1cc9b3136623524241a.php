@@ -3,35 +3,27 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-
 	<div class="services">
 		<div class="container">
-
-<div class="btn-group">
-
-	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-	<?php echo isset($type) ? $type['tname'] : '医院分类'?> 
-		<span class="caret"></span>
-	</button>
-
-	<ul class="dropdown-menu" role="menu">
-		<li><a href="<?php echo e(url('service')); ?>">查看全部</a></li>
-		<?php foreach($info as $val){?>
-			<li><a href="<?php echo e(url('service')); ?>?type_id=<?php echo $val['tid']?>"><?php echo $val['tname']?></a></li>
-		<?php
-		}
-		?>
-		
-	</ul>
-</div>
+			<div class="btn-group">
+			<button type="button" id="bbt" tid="<?php echo isset($type['tid']) ? $type['tid'] : ''?>" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+			<?php echo isset($type) ? $type['tname'] : '医院分类';?> 
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="<?php echo e(url('service')); ?>">查看全部</a></li>
+				<?php foreach($info as $val){?>
+					<li><a href="<?php echo e(url('service')); ?>?type_id=<?php echo $val['tid']?>"><?php echo $val['tname']?></a></li>
+				<?php
+				}
+				?>	
+			</ul>
+			</div>
 			<h3>Services overview</h3>
 			<div class="row services-info" id="list">		
-				
 				<?php foreach($arr as $val): ?>	
-				<div class="col-sm-6 col-md-4 services-grids" >
-
-					<div class="thumbnail" eid="<?php echo e($val['id']); ?>">
-					
+				<div class="col-sm-6 col-md-4 services-grids">
+					<div class="thumbnail" eid="<?php echo $val['id']?>">
 						<div class="moments-bottom">
 							<a href="<?php echo e(url('/info',['id',$val['id']])); ?>">
 								<img src="/img/<?=$val['image']?>" class="img-responsive zoom-img " alt="">				
@@ -52,8 +44,7 @@
 					</div>
 				</div>
 				<?php endforeach; ?>
-
-				<div class="clearfix"></div>
+				<div class="clearfix"> </div>
 			</div>
 			<button type="button" id="page" class="btn btn-primary btn-lg" page="1" ser="<?php echo e($data['search']); ?>" >加载更多</button
 			<!--light-box-js -->
@@ -70,12 +61,12 @@
 
 <script>
 
+function get_page(page, search, eid, tid) {
 
-function get_page(page, search, eid) {
 	$.ajax({
 		type:'get',
 		url:'<?php echo e(url("ServiceShow")); ?>',
-		data:'page='+page+'&search='+search+'&eid='+eid,
+		data:'page='+page+'&search='+search+'&eid='+eid+'&tid='+tid,
 		dataType:'json',
 		success:function(e) {
 			var str = ''
@@ -98,7 +89,7 @@ function get_page(page, search, eid) {
 				str += '<p>'+profile+'</p>'
 				str += '</div></div></div></div>'
 			})
-			
+
 			$('#list').append(str)
 		}
 
@@ -107,13 +98,19 @@ function get_page(page, search, eid) {
 }
 
 $('#page').click(function(){
-	var page = $(this).attr('page')
+
+	// 当前页
+	var page = $(this).attr('page') 
+	// 搜索条件 名臣
 	var search = $('#page').attr('ser')
+	// 最后一条id
 	var eid = $('.thumbnail').last().attr('eid')
+	// 搜索条件 分类
+	var tid = $('#bbt').attr('tid')
 
 	page = parseInt(page) + 1
 
-	get_page(page, search, eid)
+	get_page(page, search, eid, tid)
 })
 
 // $(function(){//页面第一次加载时

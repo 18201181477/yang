@@ -72,6 +72,7 @@ class User extends Authenticatable
     public function login($data)
     {
 
+
         $number = abs(crc32($data['name']))%10;
         $this->table = 'users_0'.$number;
 
