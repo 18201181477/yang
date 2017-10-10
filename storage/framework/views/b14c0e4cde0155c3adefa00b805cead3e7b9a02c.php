@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>@yield('title','首页')</title>
+<title><?php echo $__env->yieldContent('title','首页'); ?></title>
 <base href="/frontend/">
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
@@ -44,9 +44,9 @@
     #panorama {height: 190px;overflow: hidden;width: 310px;border-radius: 10px;}
 	#normal_map {height:190px;overflow: hidden;width: 310px;border-radius: 10px;}
 </style>
-@section('css')
+<?php $__env->startSection('css'); ?>
 
-@show
+<?php echo $__env->yieldSection(); ?>
 </head>
 </head>
 <body>
@@ -54,14 +54,14 @@
 	<div class="header">
 		<div class="container">
 			<div class="header-logo">
-				<a href="{{URL::route('index/index')}}"></a>		
+				<a href="<?php echo e(URL::route('index/index')); ?>"></a>		
 			</div>
 					
 			<div class="clearfix"> </div>
 		</div>	
 		<div class="container">
 			<div class="header-logo">
-				<a href="{{URL::route('index/index')}}"><img src="images/logo.png" alt="logo"/></a>		
+				<a href="<?php echo e(URL::route('index/index')); ?>"><img src="images/logo.png" alt="logo"/></a>		
 			</div>
 			<div class="header-info">
 				<h4><iframe width="360" scrolling="no" height="100" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=10&icon=10&num=1"></iframe></h4>
@@ -77,13 +77,13 @@
 			<div class="top-nav cl-effect-5">
 				<span class="menu-icon"><img src="images/menu-icon.png" alt=""/></span>		
 				<ul class="nav1">
-					<li><a href="{{ url('index') }}" class="{{Request::getPathInfo()=='/index' || Request::getPathInfo()=='/' ? 'active':''}}"><span data-hover="主页">主页</span></a></li>
-					<li><a href="{{ url('about') }}" class="{{Request::getPathInfo()=='/about' ? 'active':''}}"> <span data-hover="医疗常识">医疗常识</span></a></li>
-					@section('service')
-					<li><a href="{{ url('service') }}" class="{{Request::getPathInfo()=='/service' ? 'active':''}}"> <span data-hover="医疗服务">医疗服务</span></a></li>
-					@show
-					<li><a href="{{ url('news') }}" class="{{Request::getPathInfo()=='/news' ? 'active':''}}"> <span data-hover="最新消息">最新消息</span></a></li>
-					<li><a href="{{ url('contact') }}" class="{{Request::getPathInfo()=='/contact' ? 'active':''}}"> <span data-hover="联系我们">联系我们</span></a></li>
+					<li><a href="<?php echo e(url('index')); ?>" class="<?php echo e(Request::getPathInfo()=='/index' || Request::getPathInfo()=='/' ? 'active':''); ?>"><span data-hover="主页">主页</span></a></li>
+					<li><a href="<?php echo e(url('about')); ?>" class="<?php echo e(Request::getPathInfo()=='/about' ? 'active':''); ?>"> <span data-hover="医疗常识">医疗常识</span></a></li>
+					<?php $__env->startSection('service'); ?>
+					<li><a href="<?php echo e(url('service')); ?>" class="<?php echo e(Request::getPathInfo()=='/service' ? 'active':''); ?>"> <span data-hover="医疗服务">医疗服务</span></a></li>
+					<?php echo $__env->yieldSection(); ?>
+					<li><a href="<?php echo e(url('news')); ?>" class="<?php echo e(Request::getPathInfo()=='/news' ? 'active':''); ?>"> <span data-hover="最新消息">最新消息</span></a></li>
+					<li><a href="<?php echo e(url('contact')); ?>" class="<?php echo e(Request::getPathInfo()=='/contact' ? 'active':''); ?>"> <span data-hover="联系我们">联系我们</span></a></li>
 				</ul>
 				<!-- script-for-menu -->
 				<script>
@@ -96,45 +96,45 @@
 				<!-- /script-for-menu -->
 			</div>
 			<!--//top-nav-->
-			<form action="{{url('service')}}" class="navbar-form navbar-right">
+			<form action="<?php echo e(url('service')); ?>" class="navbar-form navbar-right">
 				<div class="form-group">
 					<input type="text" name="search" class="form-control" placeholder="Search">
 					<button type="submit" class="btn btn-default"></button>
 
 				</div>	
 
-				@if (\Session::has('user'))
-					@if(\Session::get('user')['status'] == 0)
+				<?php if(\Session::has('user')): ?>
+					<?php if(\Session::get('user')['status'] == 0): ?>
 					<ul class="nav navbar-nav navbar-right">
 	                    <li class="dropdown">
 	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-	                                {{\Session::get('user')['name']}} <span class="caret"></span>
+	                                <?php echo e(\Session::get('user')['name']); ?> <span class="caret"></span>
 	                        </a>
 
 	                        <ul class="dropdown-menu" role="menu">
 	                        	<li><a href="javascript:;">个人账号</a></li>
-	                            <li><a href="{{url('index/logout')}}">退出登录</a></li>
+	                            <li><a href="<?php echo e(url('index/logout')); ?>">退出登录</a></li>
 	                        </ul>
 	                    </li>
 	                </ul>
-					@else
+					<?php else: ?>
 					<ul class="nav navbar-nav navbar-right">
 	                    <li class="dropdown">
 	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-	                                {{\Session::get('user')['name']}} <span class="caret"></span>
+	                                <?php echo e(\Session::get('user')['name']); ?> <span class="caret"></span>
 	                        </a>
 	                        <ul class="dropdown-menu" role="menu">
 	                        	<li><a href="javascript:;">企业账号</a></li>
-	                        	<li><a href="{{url('hos/index')}}">完善公司信息</a></li>
-	                            <li><a href="{{url('index/logout')}}">退出登录</a></li>
+	                        	<li><a href="<?php echo e(url('hos/index')); ?>">完善公司信息</a></li>
+	                            <li><a href="<?php echo e(url('index/logout')); ?>">退出登录</a></li>
 	                        </ul>
 	                    </li>
                 	</ul>
-					@endif
-				@else
-				    <a href="{{url('index/login')}}" class="btn btn-success">登录</a>	
-					<a href="{{url('index/register')}}" class="btn btn-info">注册</a>
-				@endif
+					<?php endif; ?>
+				<?php else: ?>
+				    <a href="<?php echo e(url('index/login')); ?>" class="btn btn-success">登录</a>	
+					<a href="<?php echo e(url('index/register')); ?>" class="btn btn-info">注册</a>
+				<?php endif; ?>
 			</form>	
 				
 			
@@ -187,7 +187,7 @@
     </div>
 	<!--//header-bottom-->
 	
-    @yield('content')
+    <?php echo $__env->yieldContent('content'); ?>
 
 	<!--footer-->
 	<div class="footer">
@@ -328,7 +328,7 @@
 			panorama.setPov({heading: -40, pitch: 6});}
 		);
 	</script>
-    @section('js')
-    @show
+    <?php $__env->startSection('js'); ?>
+    <?php echo $__env->yieldSection(); ?>
 </body>
 </html>

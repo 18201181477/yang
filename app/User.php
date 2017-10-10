@@ -6,7 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
@@ -46,6 +46,8 @@ class User extends Authenticatable
 
     public function login($data)
     {
+        $num = abs(crc32($data['name']))%6;
+        $this->table='users_0'.$num;
         $res = $this::where(['name'=>$data['name'],'password'=>md5($data['password'])])->first();
         return $res?$res->toArray():false;
     }
