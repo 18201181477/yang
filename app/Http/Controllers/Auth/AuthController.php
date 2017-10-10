@@ -133,10 +133,10 @@ class AuthController extends Controller
                 {
                     $name = $data['name'];
                     $email=$data['email'];
-                    $flag = Mail::send('emails.test',['name'=>"'".$name."'"],function($message) use($email){
-                        $to=$email;
-                        $message ->to($to)->subject('杨晶杰的医疗服务网站提醒您:');
-                    });
+                    // $flag = Mail::send('emails.test',['name'=>"'".$name."'"],function($message) use($email){
+                    //     $to=$email;
+                    //     $message ->to($to)->subject('杨晶杰的医疗服务网站提醒您:');
+                    // });
 
             }
             return redirect('index');

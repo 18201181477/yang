@@ -1,7 +1,4 @@
-@extends('layouts.frontend_layouts')
-
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!--banner-->
 	<div class="banner">
 <link rel="stylesheet" href="css/lunbo.css">
@@ -10,9 +7,9 @@
 	<div class="slider"><!--主体结构，请用此类名调用插件，此类名可自定义-->
 	
 		<ul>
-			<!-- @foreach($data as $val)
-			<li><a href="{{url('/info',['id',$val->id])}}"><img src="/img/{{$val->image}}" alt="" /></a></li>
-			@endforeach -->
+			<!-- <?php foreach($data as $val): ?>
+			<li><a href="<?php echo e(url('/info',['id',$val->id])); ?>"><img src="/img/<?php echo e($val->image); ?>" alt="" /></a></li>
+			<?php endforeach; ?> -->
 			<li><a href="#"><img src="images/1.jpg" alt="两弯似蹙非蹙笼烟眉，一双似喜非喜含情目。" /></a></li>
 			<li><a href="#"><img src="images/2.jpg" alt="态生两靥之愁，娇袭一身之病。" /></a></li>
 			<li><a href="#"><img src="images/3.jpg" alt="泪光点点，娇喘微微。" /></a></li>
@@ -101,4 +98,5 @@ $(".slider").YuxiSlider({
 		</div>
 	</div>
 	<!--//work-->
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.frontend_layouts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

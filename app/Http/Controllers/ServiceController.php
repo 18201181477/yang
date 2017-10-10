@@ -88,9 +88,53 @@ class ServiceController extends Controller
     public function info(Request $request,$id)
     {
         $arr = Hospital::where(['id'=>$id])->first()->toArray();
-        // echo "<pre>";
-        // print_r($arr);die;
-    	return view('service.info',['data'=>$arr]);
+
+        $offArr = OffsHos::where(['hosid'=>$id])->select('offsid')->get()->toArray();
+
+        $offsId = array();
+        foreach ($offArr as $key => $val) {
+            array_push($offsId, $val['offsid']);
+        }
+        $offStr = implode(',', $offsId);
+        
+        $officeArr = \DB::select("SELECT name,id FROM offices WHERE id IN ($offStr) AND pid=0");
+        
+        $officeArr = json_decode(json_encode($officeArr), true);
+        
+        $doctorsArr = Doctors::where(['hos_id'=>$id])->get()->toArray();
+
+        foreach ($doctorsArr as $k => $v) {
+            $newArr[$v['offs_pid_id']][] = $v;
+        }
+
+        foreach ($officeArr as $k => &$v) {
+            $v['id'] = isset($newArr[$v['id']]) ? $newArr[$v['id']] : [];
+        }
+        
+        return view('service.info',['data'=>$arr,'officeArr'=>$officeArr]);
+    }
+
+    public function doctor($id)
+    {
+        $doctorArr = Doctors::where(['doc_id'=>$id])->first()->toArray();
+
+        $hospital = Hospital::where(['id'=>$doctorArr['hos_id']])->first()->toArray();
+
+        $offArr = Doctors::where(['offs_pid_id'=>$doctorArr['offs_pid_id']])->select('offs_id')->get()->toArray();
+
+        $offsId = array();
+        foreach ($offArr as $key => $val) {
+            array_push($offsId, $val['offs_id']);
+        }
+        //echo "<pre>";
+        //print_r($offsId);die;
+        $offStr = implode(',', $offsId);
+        
+        $officeArr = \DB::select("SELECT name,id FROM offices WHERE id IN ($offStr) AND pid=0");
+        
+        $officeArr = json_decode(json_encode($officeArr), true);
+        
+        return view('service.doctor',['doctorArr'=>$doctorArr,'hospital'=>$hospital]);
     }
 
     //挂号
@@ -124,4 +168,9 @@ class ServiceController extends Controller
         
     	return view('service.department',['data'=>$arr,'param'=>$data]);
     }
+
+    public function heheda() {
+        echo 1;exit;
+    }
+
 }

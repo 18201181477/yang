@@ -1,10 +1,8 @@
-@extends('layouts.hospital_layouts')
-
-@section('title')
+<?php $__env->startSection('title'); ?>
     医院后台
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,7 +23,7 @@
         <div class="page">
             <img src="img/coin02.png" /><span><a href="javascript:;">科室展示</a>
             <div class="add" style="float:right;display: inline-block;height: 20px;">
-                <a class="addA" href="{{url('hos/doctorpage')}}" style="color:#fff">人员添加&nbsp;&nbsp;+</a>
+                <a class="addA" href="<?php echo e(url('hos/doctorpage')); ?>" style="color:#fff">人员添加&nbsp;&nbsp;+</a>
             </div>
         </div>
     </div>
@@ -33,8 +31,9 @@
         <!-- banner页面样式 -->
         <input type="hidden" name="_token" value="<?PHP echo csrf_token(); ?>" id="csrf">
         <div class="banner">
-       <form action="{{url('hos/doctor')}}" method="get">
-                    {{csrf_field()}}
+       <form action="<?php echo e(url('hos/doctor')); ?>" method="get">
+                    <?php echo e(csrf_field()); ?>
+
                         <div class="cfD">
                             <input name="docname" class="userinput" type="text" placeholder="姓名查找" value="<?php echo $data['docname'] ?>" />-
                             <input name="name" class="userinput vpr" type="text" placeholder="科室查找" value="<?php echo $data['name'] ?>" />
@@ -75,7 +74,7 @@
                        }
                       ?>
                         </td>
-                        <td><a href="{{url('hos/rota')}}?docid=<?php echo $v['doc_id']?>">排班</a><a href="{{url('hos/doctorup')}}?id=<?php echo $v['doc_id'] ?>"><img class="operation" src="img/update.png"></a><span class="del"><img class="operation delban" src="img/delete.png"></span><input type="hidden" value="<?php echo $v['doc_id'] ?>"/>
+                        <td><a href="<?php echo e(url('hos/rota')); ?>?docid=<?php echo $v['doc_id']?>">排班</a><a href="<?php echo e(url('hos/doctorup')); ?>?id=<?php echo $v['doc_id'] ?>"><img class="operation" src="img/update.png"></a><span class="del"><img class="operation delban" src="img/delete.png"></span><input type="hidden" value="<?php echo $v['doc_id'] ?>"/>
                         </td>
                     </tr>
                  
@@ -112,7 +111,7 @@
         if(window.confirm('此操作将删除该医生信息？')){
             $.ajax({
                 type: "POST",
-                url: "{{url('hos/doctordel')}}",
+                url: "<?php echo e(url('hos/doctordel')); ?>",
                 data: "id="+id+"&_token="+csrf,
                 success: function(msg){
                 if(msg == 1){
@@ -130,4 +129,5 @@
    
 </script>
 </html>
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.hospital_layouts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

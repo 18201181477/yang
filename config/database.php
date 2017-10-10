@@ -53,11 +53,21 @@ return [
         ],
 
         'mysql' => [
+            'read' => [
+                'host' => '127.0.0.1:3307',
+                'username'  =>  'root',
+                'password'  =>  ''
+            ],
+            'write' => [
+                'host' => '127.0.0.1:3306',
+                'username'  =>  'root',
+                'password'  =>  'root'
+            ],
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'localhost'),
+            // 'host'      => env('DB_HOST', 'localhost'),
             'database'  => env('DB_DATABASE', 'forge'),
-            'username'  => env('DB_USERNAME', 'forge'),
-            'password'  => env('DB_PASSWORD', ''),
+            // 'username'  => env('DB_USERNAME', 'forge'),
+            // 'password'  => env('DB_PASSWORD', ''),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
