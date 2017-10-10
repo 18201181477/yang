@@ -48,7 +48,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('index/logout',function(){
         // \Auth::logout();
         \Session::forget('user');
+
         return redirect('index');
+
     });
 	Route::get('captcha', function(){
 		$builder = new CaptchaBuilder;
@@ -61,7 +63,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('pay',function(){
         // 创建支付单。
         $alipay = app('alipay.web');
-        $alipay->setOutTradeNo('55228858664558');
+        $alipay->setOutTradeNo('123456789788999');
         $alipay->setTotalFee('0.01');
         $alipay->setSubject('hghghg');
         $alipay->setBody('hghghg');
@@ -121,6 +123,8 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     Route::any('/ServiceShow',['uses'=>'ServiceController@ServiceShow']);
+
+    Route::get('/doctor/id/{id}',['uses'=>'ServiceController@doctor']);
 
 });
 
@@ -248,6 +252,10 @@ Route::group(['middleware'=>['web'],'namespace'=>'Admin'],function(){
 
 Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
     Route::group(['prefix'=>'hos'],function(){
+          Route::get('goodaddshow',['uses'=>'KillgoodsController@index']);
+          Route::post('goodsadd',['uses'=>'KillgoodsController@goodsadd']);
+          Route::get('goodshow',['uses'=>'KillgoodsController@goodsshow']);
+          Route::get('kill',function(){echo 111 ;});
         //后台首页展示
          Route::get('index',['uses'=>'IndexController@index']);
         //详情管理页面
@@ -285,18 +293,22 @@ Route::group(['middleware'=>'web','namespace' => 'Hospitalback'], function(){
          Route::post('doctorupadd',['uses'=>'DoctorController@doctorupadd']);
 
         //值班管理页面
+         Route::get('rota',['uses'=>'RotaController@rotashow']);
+        //值班添加页面
+         Route::get('rotaaddpage',['uses'=>'RotaController@rotaaddpage']);
+         //医生值班信息添加
+         Route::post('rotaadd',['uses'=>'RotaController@rotaadd']);
+         //医生值班信息删除
+         Route::post('rotadel',['uses'=>'RotaController@rotadel']);
+         //值班管理页面
          Route::get('tables',['uses'=>'TablesController@tables']);
-
         //地图页面
         // Route::get('tables',['uses'=>'TablesController@tables']);
+         
         // Route::get('pc/',['uses'=>'TablesController@tables']);
-        
-       
 
     });
 });
-
-
 
 
 		

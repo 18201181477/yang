@@ -75,7 +75,7 @@
                        }
                       ?>
                         </td>
-                        <td><a href="{{url('hos/doctorup')}}?id=<?php echo $v['doc_id'] ?>"><img class="operation" src="img/update.png"></a><span class="del"><img class="operation delban" src="img/delete.png"></span><input type="hidden" value="<?php echo $v['doc_id'] ?>"/>
+                        <td><a href="{{url('hos/rota')}}?docid=<?php echo $v['doc_id']?>">排班</a><a href="{{url('hos/doctorup')}}?id=<?php echo $v['doc_id'] ?>"><img class="operation" src="img/update.png"></a><span class="del"><img class="operation delban" src="img/delete.png"></span><input type="hidden" value="<?php echo $v['doc_id'] ?>"/>
                         </td>
                     </tr>
                  

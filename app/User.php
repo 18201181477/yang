@@ -9,7 +9,7 @@ use DB;
 class User extends Authenticatable
 {
     protected $table = 'users';
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -71,8 +71,10 @@ class User extends Authenticatable
 
     public function login($data)
     {
+
         $number = abs(crc32($data['name']))%10;
         $this->table = 'users_0'.$number;
+
 
         $res = $this::where(['name'=>$data['name'],'password'=>md5($data['password'])])->first();
         return $res?$res->toArray():false;

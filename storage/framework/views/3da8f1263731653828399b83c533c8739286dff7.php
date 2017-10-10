@@ -1,7 +1,4 @@
-@extends('layouts.frontend_layouts')
-
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!--banner-->
 	<div class="banner">
 <link rel="stylesheet" href="css/lunbo.css">
@@ -11,18 +8,18 @@
 	
 		<ul>
 <<<<<<< HEAD
-			@foreach($data as $val)
-			<li><a href="{{url('/info',['id',$val->id])}}"><img src="/img/{{$val->image}}" alt="" /></a></li>
-			@endforeach
+			<?php foreach($data as $val): ?>
+			<li><a href="<?php echo e(url('/info',['id',$val->id])); ?>"><img src="/img/<?php echo e($val->image); ?>" alt="" /></a></li>
+			<?php endforeach; ?>
 			<!-- <li><a href="#"><img src="images/1.jpg" alt="两弯似蹙非蹙笼烟眉，一双似喜非喜含情目。" /></a></li>
 			<li><a href="#"><img src="images/2.jpg" alt="态生两靥之愁，娇袭一身之病。" /></a></li>
 			<li><a href="#"><img src="images/3.jpg" alt="泪光点点，娇喘微微。" /></a></li>
 			<li><a href="#"><img src="images/4.jpg" alt="闲静似娇花照水，行动如弱柳扶风。" /></a></li>
 			<li><a href="#"><img src="images/5.jpg" alt="心较比干多一窍，病如西子胜三分。" /></a></li> -->
 =======
-			<!-- @foreach($data as $val)
-			<li><a href="{{url('/info',['id',$val->id])}}"><img src="/img/{{$val->image}}" alt="" /></a></li>
-			@endforeach -->
+			<!-- <?php foreach($data as $val): ?>
+			<li><a href="<?php echo e(url('/info',['id',$val->id])); ?>"><img src="/img/<?php echo e($val->image); ?>" alt="" /></a></li>
+			<?php endforeach; ?> -->
 			<li><a href="#"><img src="images/1.jpg" alt="两弯似蹙非蹙笼烟眉，一双似喜非喜含情目。" /></a></li>
 			<li><a href="#"><img src="images/2.jpg" alt="态生两靥之愁，娇袭一身之病。" /></a></li>
 			<li><a href="#"><img src="images/3.jpg" alt="泪光点点，娇喘微微。" /></a></li>
@@ -116,4 +113,5 @@ $(".slider").YuxiSlider({
 		</div>
 	</div>
 	<!--//work-->
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.frontend_layouts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

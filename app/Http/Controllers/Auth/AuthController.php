@@ -130,6 +130,7 @@ class AuthController extends Controller
                 //echo "<pre>";print_r(new Mail());exit;
                \Session::put('user',$data);
 
+
            /*     if(!empty($data['name']) && !empty($data['email']))
                 {
                     $name = $data['name'];
@@ -140,6 +141,7 @@ class AuthController extends Controller
                     });
 
             }*/
+
             return redirect('index');
         } else {
             return redirect()->back()->with('message','用户名或密码错误')->withInput();
