@@ -48,6 +48,7 @@
 
 <?php echo $__env->yieldSection(); ?>
 </head>
+</head>
 <body>
 	<!--header-->
 	<div class="header">
@@ -123,7 +124,8 @@
 	                                <?php echo e(\Session::get('user')['name']); ?> <span class="caret"></span>
 	                        </a>
 	                        <ul class="dropdown-menu" role="menu">
-	                        	<li><a href="<?php echo e(url('hos/index')); ?>">企业账号</a></li>
+	                        	<li><a href="javascript:;">企业账号</a></li>
+	                        	<li><a href="<?php echo e(url('hos/index')); ?>">完善公司信息</a></li>
 	                            <li><a href="<?php echo e(url('index/logout')); ?>">退出登录</a></li>
 	                        </ul>
 	                    </li>

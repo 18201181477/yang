@@ -48,11 +48,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('index/logout',function(){
         // \Auth::logout();
         \Session::forget('user');
-<<<<<<< HEAD
-        return redirect('index');
-=======
+
         return redirect('/index');
->>>>>>> develop
     });
 	Route::get('captcha', function(){
 		$builder = new CaptchaBuilder;
